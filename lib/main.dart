@@ -1,3 +1,12 @@
+import 'package:dictionary/bottomsheet.dart';
+import 'package:dictionary/detail_myvocab_screen.dart';
+import 'package:dictionary/detail_wordth_screen.dart';
+import 'package:dictionary/detail_wordeng_screen.dart';
+import 'package:dictionary/firstpage.dart';
+import 'package:dictionary/history_screen.dart';
+import 'package:dictionary/myvocab_screen.dart';
+import 'package:dictionary/search_screen.dart';
+import 'package:dictionary/wordofday_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,10 +23,10 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         fontFamily: 'Sarabun',
-       // primarySwatch: Colors.blue,
+        // primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      // home:,
+      home: const MyVocab_Screen(),
     );
   }
 }
