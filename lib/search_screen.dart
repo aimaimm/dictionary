@@ -128,6 +128,7 @@ class _Search_ScreenState extends State<Search_Screen> {
                 Container(
                   padding:const EdgeInsets.only(top: 13, left: 8, right: 8),
                   child: ListView.builder(
+                    physics:const BouncingScrollPhysics(),
                       itemCount: data.length,
                       itemBuilder: (context, index) {
                         return Card(
