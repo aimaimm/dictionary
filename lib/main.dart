@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         // primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-     // home: const Search_TH2Eng_Screen(),
+      home: const FirstPage(),
       // initialRoute: '/loaddataPage',
       // routes:  {
       //   '/loaddataPage' :(context)=>const FirstPage(),

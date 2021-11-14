@@ -1,10 +1,21 @@
+import 'package:dictionary/search_eng2th_screen.dart';
+import 'package:dictionary/search_th2eng.dart';
 import 'package:dictionary/sidebar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flip_card/flip_card.dart';
 
 class WordOfDay_Screen extends StatefulWidget {
-  const WordOfDay_Screen({Key? key}) : super(key: key);
+  const WordOfDay_Screen(
+      {Key? key,
+      required this.eng2th,
+      required this.th2eng,
+      required this.lang_mode})
+      : super(key: key);
+
+  final List eng2th;
+  final List th2eng;
+  final int lang_mode;
 
   @override
   _WordOfDay_ScreenState createState() => _WordOfDay_ScreenState();
@@ -45,6 +56,29 @@ class _WordOfDay_ScreenState extends State<WordOfDay_Screen> {
             margin: const EdgeInsets.all(28),
             height: 55,
             child: TextField(
+              onTap: () {
+                if (widget.lang_mode == 0) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Search_TH2Eng_Screen(
+                        th2eng: widget.th2eng,
+                        eng2th: widget.eng2th,
+                      ),
+                    ),
+                  );
+                } else {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Search_eng_Screen(
+                        th2eng: widget.th2eng,
+                        eng2th: widget.eng2th,
+                      ),
+                    ),
+                  );
+                }
+              },
               decoration: InputDecoration(
                 hintText: 'Search word',
                 hintStyle: const TextStyle(fontSize: 13),
