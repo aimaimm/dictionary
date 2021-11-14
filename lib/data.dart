@@ -17,4 +17,8 @@ List History = [
   {'name': 'Mind'},
 ];
 
-
+List category = [
+  {'cat_name': 'Adore','isChecked':false},
+  {'cat_name': 'Adore','isChecked':false},
+  {'cat_name': 'Adore','isChecked':false},
+];

@@ -14,9 +14,7 @@ class MyVocab_Screen extends StatefulWidget {
 
 class _MyVocab_ScreenState extends State<MyVocab_Screen> {
   TextEditingController Category_txt = TextEditingController();
-   List category = [
-    {'cat_name': 'Adore'},
-  ];
+ 
 
   Future<void> InputCategories(BuildContext context) async {
     return showDialog(
