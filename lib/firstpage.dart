@@ -18,7 +18,7 @@ class FirstPage extends StatelessWidget {
                   Positioned(
                     top: MediaQuery.of(context).size.height * 0.25,
                     left: MediaQuery.of(context).size.width * 0.26,
-                    child: Text(
+                    child:const Text(
                       'Dictio',
                       style: TextStyle(
                           color: Colors.white,
@@ -29,7 +29,7 @@ class FirstPage extends StatelessWidget {
                   Positioned(
                     top: MediaQuery.of(context).size.height * 0.38,
                     right: MediaQuery.of(context).size.width * 0.27,
-                    child: Text(
+                    child:const Text(
                       'onary',
                       style: TextStyle(
                           color: Colors.white,
@@ -44,12 +44,12 @@ class FirstPage extends StatelessWidget {
             //   height: MediaQuery.of(context).size.height * 0.8,
             // ),
             Divider(
-              color: Color(0XFF707070).withOpacity(0.8),
+              color:const Color(0XFF707070).withOpacity(0.8),
               height: 23,
               indent: 35,
               endIndent: 35,
             ),
-            Text(
+           const Text(
               'Dictionaey For Learn',
               style: TextStyle(
                 color: Color(0XFF707070),
