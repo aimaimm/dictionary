@@ -14,40 +14,36 @@ class _History_ScreenState extends State<History_Screen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        shape: RoundedRectangleBorder(
+        shape:const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
-            bottomLeft: const Radius.circular(20.0),
-            bottomRight: const Radius.circular(20.0),
+            bottomLeft: Radius.circular(20.0),
+            bottomRight:  Radius.circular(20.0),
           ),
         ),
         automaticallyImplyLeading: false,
         backgroundColor: Colors.black,
         titleSpacing: 0,
         centerTitle: false,
-        title: Container(
-          //color: Colors.red,
-          //padding: EdgeInsets.symmetric(horizontal: 0),
-          child: Builder(
-            builder: (context) => IconButton(
-              icon: SvgPicture.asset(
-                "assets/icon/menubar.svg",
-                color: Colors.white,
-                height: 50,
-                width: 50,
-              ),
-              onPressed: () => Scaffold.of(context).openDrawer(),
+        title: Builder(
+          builder: (context) => IconButton(
+            icon: SvgPicture.asset(
+              "assets/icon/menubar.svg",
+              color: Colors.white,
+              height: 50,
+              width: 50,
             ),
+            onPressed: () => Scaffold.of(context).openDrawer(),
           ),
         ),
         bottom: PreferredSize(
-          preferredSize: Size.fromHeight(80.0),
+          preferredSize:const Size.fromHeight(80.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
                 padding:
-                    EdgeInsets.only(bottom: 25, right: 20, left: 20, top: 8),
-                child: Text(
+                   const EdgeInsets.only(bottom: 25, right: 20, left: 20, top: 8),
+                child:const Text(
                   'History',
                   style: TextStyle(
                       fontFamily: 'DMDisplay',
@@ -63,19 +59,19 @@ class _History_ScreenState extends State<History_Screen> {
         padding: const EdgeInsets.all(20.0),
         child: ListView(
           //physics: ScrollPhysics(),
-          physics: BouncingScrollPhysics(),
+          physics:const BouncingScrollPhysics(),
           children: [
-            Text(
+           const Text(
               'Most Search',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
-            SizedBox(
+          const  SizedBox(
               height: 10,
             ),
             ListView.builder(
                 primary: false,
                 shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
+                physics:const NeverScrollableScrollPhysics(),
                 itemCount: most.length,
                 itemBuilder: (context, index) {
                   return Card(
@@ -86,24 +82,24 @@ class _History_ScreenState extends State<History_Screen> {
                     ),
                     child: ListTile(
                       leading: Text('${most[index]['name']}'),
-                      trailing: Icon(Icons.arrow_forward_ios_rounded),
+                      trailing:const Icon(Icons.arrow_forward_ios_rounded),
                     ),
                   );
                 }),
-            SizedBox(
+          const  SizedBox(
               height: 10,
             ),
-            Text(
+           const Text(
               'History',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
-            SizedBox(
+           const SizedBox(
               height: 10,
             ),
             ListView.builder(
                 primary: false,
                 shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
+                physics:const NeverScrollableScrollPhysics(),
                 itemCount: History.length,
                 itemBuilder: (context, index) {
                   return Card(
@@ -114,7 +110,7 @@ class _History_ScreenState extends State<History_Screen> {
                     ),
                     child: ListTile(
                       leading: Text('${History[index]['name']}'),
-                      trailing: Icon(Icons.arrow_forward_ios_rounded),
+                      trailing:const Icon(Icons.arrow_forward_ios_rounded),
                     ),
                   );
                 })

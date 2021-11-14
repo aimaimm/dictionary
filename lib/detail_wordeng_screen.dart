@@ -8,17 +8,14 @@ class Detail_WordEng_Screen extends StatefulWidget {
 }
 
 class _Detail_WordEng_ScreenState extends State<Detail_WordEng_Screen> {
-
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
-            bottomLeft: const Radius.circular(20.0),
-            bottomRight: const Radius.circular(20.0),
+            bottomLeft: Radius.circular(20.0),
+            bottomRight: Radius.circular(20.0),
           ),
         ),
         automaticallyImplyLeading: false,
@@ -28,8 +25,8 @@ class _Detail_WordEng_ScreenState extends State<Detail_WordEng_Screen> {
           'Back',
           style: TextStyle(fontSize: 15),
         ),
-         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_new_outlined),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios_new_outlined),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -37,13 +34,14 @@ class _Detail_WordEng_ScreenState extends State<Detail_WordEng_Screen> {
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(120.0),
           child: Container(
-            padding: EdgeInsets.only(bottom: 25, right: 20, left: 20, top: 8),
+            padding:
+                const EdgeInsets.only(bottom: 25, right: 20, left: 20, top: 8),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+                  children: const [
                     Text(
                       'ability',
                       style: TextStyle(
@@ -63,102 +61,104 @@ class _Detail_WordEng_ScreenState extends State<Detail_WordEng_Screen> {
                   ],
                 ),
                 IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.favorite_border_rounded,
-                      size: 30,
-                      color: Colors.white,
-                    ))
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.favorite_border_rounded,
+                    size: 30,
+                    color: Colors.white,
+                  ),
+                ),
               ],
             ),
           ),
         ),
       ),
       body: SingleChildScrollView(
+        physics:const BouncingScrollPhysics(),
         child: Padding(
           padding: const EdgeInsets.all(23.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+             const Text(
                 'DEFINITION',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              Divider(),
+            const  Divider(),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(top: 8),
-                    child: CircleAvatar(
+                    margin:const EdgeInsets.only(top: 8),
+                    child:const CircleAvatar(
                       radius: 5,
                       backgroundColor: Colors.grey,
                     ),
                   ),
-                  SizedBox(
+                 const SizedBox(
                     width: 15,
                   ),
-                  Text(
+                 const Text(
                     'พรสวรรค์ \nที่คงอยู่ตลอดไป',
                     style: TextStyle(fontSize: 16),
                   ),
-                  SizedBox(
+                 const SizedBox(
                     height: 6,
                   ),
                 ],
               ),
-              SizedBox(
+             const SizedBox(
                 height: 23,
               ),
-              Text(
+            const Text(
                 'SYNONYMS',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              Divider(),
+             const Divider(),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(top: 8),
-                    child: CircleAvatar(
+                    margin:const EdgeInsets.only(top: 8),
+                    child:const CircleAvatar(
                       radius: 5,
                       backgroundColor: Colors.grey,
                     ),
                   ),
-                  SizedBox(
+                const SizedBox(
                     width: 15,
                   ),
-                  Text(
+                 const Text(
                     'talent (N.)',
                     style: TextStyle(fontSize: 16),
                   ),
-                  SizedBox(
+                 const SizedBox(
                     height: 6,
                   ),
                 ],
               ),
-              SizedBox(
+            const SizedBox(
                 height: 23,
               ),
-              Text(
+             const Text(
                 'ANTONYMS',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              Divider(),
+             const Divider(),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(top: 8),
-                    child: CircleAvatar(
+                    margin:const EdgeInsets.only(top: 8),
+                    child:const CircleAvatar(
                       radius: 5,
                       backgroundColor: Colors.grey,
                     ),
                   ),
-                  SizedBox(
+                 const SizedBox(
                     width: 15,
                   ),
-                  Text(
+                 const Text(
                     'inability',
                     style: TextStyle(fontSize: 16),
                   ),

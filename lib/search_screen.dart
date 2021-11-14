@@ -23,7 +23,7 @@ class _Search_ScreenState extends State<Search_Screen> {
     {'name': 'Hello'},
     {'name': 'Hello'},
   ];
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,27 +34,24 @@ class _Search_ScreenState extends State<Search_Screen> {
         centerTitle: false,
         titleSpacing: 0,
         automaticallyImplyLeading: false,
-        title: Container(
-          //color: Colors.red,
-          //padding: EdgeInsets.symmetric(horizontal: 0),
-          child: Builder(
-            builder: (context) => IconButton(
-              icon: SvgPicture.asset(
-                "assets/icon/menubar.svg",
-                color: Colors.white,
-                height: 50,
-                width: 50,
-              ),
-              onPressed: () => Scaffold.of(context).openDrawer(),
+        title: Builder(
+          builder: (context) => IconButton(
+            icon: SvgPicture.asset(
+              "assets/icon/menubar.svg",
+              color: Colors.white,
+              height: 50,
+              width: 50,
             ),
+            onPressed: () => Scaffold.of(context).openDrawer(),
           ),
         ),
         actions: [
           Container(
-            padding: EdgeInsets.only(top: 8, bottom: 8, left: 8, right: 1),
+            padding:
+                const EdgeInsets.only(top: 8, bottom: 8, left: 8, right: 1),
             child: TextButton(
               onPressed: () {},
-              child: Text(
+              child: const Text(
                 'TH-ENG',
                 style: TextStyle(color: Colors.black),
               ),
@@ -62,10 +59,10 @@ class _Search_ScreenState extends State<Search_Screen> {
             ),
           ),
           Container(
-            padding: EdgeInsets.only(top: 8, right: 8, bottom: 8),
+            padding: const EdgeInsets.only(top: 8, right: 8, bottom: 8),
             child: TextButton(
               onPressed: () {},
-              child: Text(
+              child: const Text(
                 'ENG-TH',
                 style: TextStyle(color: Colors.black),
               ),
@@ -78,70 +75,70 @@ class _Search_ScreenState extends State<Search_Screen> {
       body: Column(
         children: [
           Container(
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   'Dictionary',
                   style: TextStyle(
                       fontFamily: 'DMDisplay',
                       color: Colors.white,
                       fontSize: 36),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
-                Container(
-                  height: 55,
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.06,
                   child: TextField(
                     decoration: InputDecoration(
                       hintText: 'Search word',
-                      hintStyle: TextStyle(fontSize: 13),
+                      hintStyle:const TextStyle(fontSize: 13),
                       filled: true,
                       fillColor: Colors.white,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(6),
                       ),
-                      focusedBorder: OutlineInputBorder(
+                      focusedBorder:const OutlineInputBorder(
                           borderSide:
                               BorderSide(width: 0.0, style: BorderStyle.none)),
-                      prefixIcon: Icon(Icons.search),
+                      prefixIcon:const Icon(Icons.search),
                     ),
                   ),
                 ),
               ],
             ),
           ),
-          SizedBox(
+        const  SizedBox(
             height: 15,
           ),
           Expanded(
             child: Stack(
               children: [
                 Container(
-                  decoration: BoxDecoration(
+                  decoration:const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
-                      topLeft: const Radius.circular(16.0),
-                      topRight: const Radius.circular(16.0),
+                      topLeft:  Radius.circular(16.0),
+                      topRight: Radius.circular(16.0),
                     ),
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.only(top: 13, left: 8, right: 8),
+                  padding:const EdgeInsets.only(top: 13, left: 8, right: 8),
                   child: ListView.builder(
                       itemCount: data.length,
                       itemBuilder: (context, index) {
                         return Card(
                           elevation: 0,
-                          color: Color(0XFFF9F9F9),
+                          color:const Color(0XFFF9F9F9),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: ListTile(
                             leading: Text('${data[index]['name']}'),
-                            trailing: Icon(Icons.arrow_forward_ios_rounded),
+                            trailing:const Icon(Icons.arrow_forward_ios_rounded),
                           ),
                         );
                       }),
