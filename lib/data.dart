@@ -3,6 +3,7 @@ List most = [
   {'name': 'Crush'},
   {'name': 'Devotion'},
   {'name': 'Fall in love'},
+  {'name': 'Some day'},
 ];
 
 List History = [
@@ -16,6 +17,4 @@ List History = [
   {'name': 'Mind'},
 ];
 
-List category = [
-  {'cat_name': 'Cazy in love'},
-];
+

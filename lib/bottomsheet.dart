@@ -58,10 +58,10 @@ class _ModalBottomSheetState extends State<ModalBottomSheet> {
 Future<dynamic> Favorite_sheet(BuildContext context) {
   bool? isChecked = false;
   return showModalBottomSheet(
-      shape: RoundedRectangleBorder(
+      shape:const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
-          topLeft: const Radius.circular(20.0),
-          topRight: const Radius.circular(20.0),
+          topLeft:  Radius.circular(20.0),
+          topRight:  Radius.circular(20.0),
         ),
       ),
       context: context,
@@ -74,12 +74,12 @@ Future<dynamic> Favorite_sheet(BuildContext context) {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
+                const  Text(
                     'Save word to..',
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   IconButton(
-                    icon: Icon(Icons.close),
+                    icon:const Icon(Icons.close),
                     onPressed: () {
                       Navigator.pop(context);
                       
@@ -88,7 +88,7 @@ Future<dynamic> Favorite_sheet(BuildContext context) {
                 ],
               ),
             ),
-            Divider(),
+           const Divider(),
             ListTile(
               leading: Checkbox(
                 value: isChecked,
@@ -96,7 +96,7 @@ Future<dynamic> Favorite_sheet(BuildContext context) {
                   isChecked = value!;
                 },
               ),
-              title: new Text('My internet is 4G ...'),
+              title: const Text('My internet is 4G ...'),
               onTap: () {
                 Navigator.pop(context);
               },
@@ -108,7 +108,7 @@ Future<dynamic> Favorite_sheet(BuildContext context) {
                   isChecked = value!;
                 },
               ),
-              title: new Text('My internet is 4G ...'),
+              title: const Text('My internet is 4G ...'),
               onTap: () {
                 Navigator.pop(context);
               },
@@ -120,7 +120,7 @@ Future<dynamic> Favorite_sheet(BuildContext context) {
                   isChecked = value!;
                 },
               ),
-              title: new Text('Crazy in love'),
+              title: const Text('Crazy in love'),
               onTap: () {
                 Navigator.pop(context);
               },
@@ -132,19 +132,19 @@ Future<dynamic> Favorite_sheet(BuildContext context) {
                   isChecked = value!;
                 },
               ),
-              title: new Text('Hate some one'),
+              title: const Text('Hate some one'),
               onTap: () {
                 Navigator.pop(context);
               },
             ),
-            Container(
+            SizedBox(
               height: MediaQuery.of(context).size.width * 0.1,
               width: MediaQuery.of(context).size.width,
               child: TextButton(
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: Text('Done'),
+                child:const Text('Done'),
                 style: TextButton.styleFrom(
                     backgroundColor: Colors.black, primary: Colors.white),
               ),
