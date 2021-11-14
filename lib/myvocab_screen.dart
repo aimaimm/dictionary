@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dictionary/data.dart';
+import 'package:dictionary/sidebar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -83,17 +84,17 @@ class _MyVocab_ScreenState extends State<MyVocab_Screen> {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 80,
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
-            bottomLeft: const Radius.circular(20.0),
-            bottomRight: const Radius.circular(20.0),
+            bottomLeft: Radius.circular(20.0),
+            bottomRight: Radius.circular(20.0),
           ),
         ),
         automaticallyImplyLeading: false,
         backgroundColor: Colors.black,
         titleSpacing: 0,
         centerTitle: true,
-        title: Text(
+        title: const Text(
           'My Vocabulary',
           style: TextStyle(fontFamily: 'DMDisplay', fontSize: 24),
         ),
@@ -113,6 +114,7 @@ class _MyVocab_ScreenState extends State<MyVocab_Screen> {
           ),
         ),
       ),
+      drawer: SideDrawer(),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: ListView.builder(
