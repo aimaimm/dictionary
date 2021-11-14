@@ -12,10 +12,10 @@ class _Detail_wordTH_ScreenState extends State<Detail_wordTH_Screen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        shape: RoundedRectangleBorder(
+        shape:const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
-            bottomLeft: const Radius.circular(20.0),
-            bottomRight: const Radius.circular(20.0),
+            bottomLeft:  Radius.circular(20.0),
+            bottomRight:  Radius.circular(20.0),
           ),
         ),
         automaticallyImplyLeading: false,

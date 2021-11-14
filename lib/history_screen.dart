@@ -61,8 +61,9 @@ class _History_ScreenState extends State<History_Screen> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: ListView(
+          //physics: ScrollPhysics(),
+          physics: BouncingScrollPhysics(),
           children: [
             Text(
               'Most Search',
@@ -71,25 +72,26 @@ class _History_ScreenState extends State<History_Screen> {
             SizedBox(
               height: 10,
             ),
-            Expanded(
-              child: ListView.builder(
-                  primary: false,
-                  shrinkWrap: true,
-                  //physics: NeverScrollableScrollPhysics(),
-                  itemCount: most.length,
-                  itemBuilder: (context, index) {
-                    return Card(
-                      elevation: 0,
-                      color: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: ListTile(
-                        leading: Text('${most[index]['name']}'),
-                        trailing: Icon(Icons.arrow_forward_ios_rounded),
-                      ),
-                    );
-                  }),
+            ListView.builder(
+                primary: false,
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: most.length,
+                itemBuilder: (context, index) {
+                  return Card(
+                    elevation: 0,
+                    color: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: ListTile(
+                      leading: Text('${most[index]['name']}'),
+                      trailing: Icon(Icons.arrow_forward_ios_rounded),
+                    ),
+                  );
+                }),
+            SizedBox(
+              height: 10,
             ),
             Text(
               'History',
@@ -98,26 +100,24 @@ class _History_ScreenState extends State<History_Screen> {
             SizedBox(
               height: 10,
             ),
-            Expanded(
-              child: ListView.builder(
-                  // primary: false,
-                  // shrinkWrap: true,
-                  //physics: NeverScrollableScrollPhysics(),
-                  itemCount: History.length,
-                  itemBuilder: (context, index) {
-                    return Card(
-                      elevation: 0,
-                      color: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: ListTile(
-                        leading: Text('${History[index]['name']}'),
-                        trailing: Icon(Icons.arrow_forward_ios_rounded),
-                      ),
-                    );
-                  }),
-            ),
+            ListView.builder(
+                primary: false,
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: History.length,
+                itemBuilder: (context, index) {
+                  return Card(
+                    elevation: 0,
+                    color: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: ListTile(
+                      leading: Text('${History[index]['name']}'),
+                      trailing: Icon(Icons.arrow_forward_ios_rounded),
+                    ),
+                  );
+                })
           ],
         ),
       ),
