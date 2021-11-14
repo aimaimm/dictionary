@@ -63,7 +63,7 @@ class _MyVocab_ScreenState extends State<MyVocab_Screen> {
                           Navigator.pop(context);
                           setState(() {
                             // utf8.decode(Category_txt.text.);
-                            category.add({'cat_name': Category_txt.toString()});
+                            category.add({'cat_name': Category_txt.text});
                           });
                         },
                       ),
