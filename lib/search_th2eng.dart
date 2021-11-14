@@ -1,27 +1,28 @@
 import 'package:dictionary/sidebar_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 
-class Search_Screen extends StatefulWidget {
-  const Search_Screen({Key? key}) : super(key: key);
+class Search_TH2Eng_Screen extends StatefulWidget {
+  const Search_TH2Eng_Screen({Key? key}) : super(key: key);
 
   @override
-  _Search_ScreenState createState() => _Search_ScreenState();
+  _Search_TH2Eng_ScreenState createState() => _Search_TH2Eng_ScreenState();
 }
 
-class _Search_ScreenState extends State<Search_Screen> {
+class _Search_TH2Eng_ScreenState extends State<Search_TH2Eng_Screen> {
   List data = [
-    {'name': 'Hello'},
-    {'name': 'Hello'},
-    {'name': 'Hello'},
-    {'name': 'Hello'},
-    {'name': 'Hello'},
-    {'name': 'Hello'},
-    {'name': 'Hello'},
-    {'name': 'Hello'},
-    {'name': 'Hello'},
-    {'name': 'Hello'},
-    {'name': 'Hello'},
+    {'name': 'สวัสดี'},
+    {'name': 'สวัสดี'},
+    {'name': 'สวัสดี'},
+    {'name': 'สวัสดี'},
+    {'name': 'สวัสดี'},
+    {'name': 'สวัสดี'},
+    {'name': 'สวัสดี'},
+    {'name': 'สวัสดี'},
+    {'name': 'สวัสดี'},
+    {'name': 'สวัสดี'},
+    {'name': 'สวัสดี'},
+    {'name': 'สวัสดี'},
   ];
 
   @override
@@ -94,55 +95,56 @@ class _Search_ScreenState extends State<Search_Screen> {
                   child: TextField(
                     decoration: InputDecoration(
                       hintText: 'Search word',
-                      hintStyle:const TextStyle(fontSize: 13),
+                      hintStyle: const TextStyle(fontSize: 13),
                       filled: true,
                       fillColor: Colors.white,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(6),
                       ),
-                      focusedBorder:const OutlineInputBorder(
+                      focusedBorder: const OutlineInputBorder(
                           borderSide:
                               BorderSide(width: 0.0, style: BorderStyle.none)),
-                      prefixIcon:const Icon(Icons.search),
+                      prefixIcon: const Icon(Icons.search),
                     ),
                   ),
                 ),
               ],
             ),
           ),
-        const  SizedBox(
+          const SizedBox(
             height: 15,
           ),
           Expanded(
             child: Stack(
               children: [
                 Container(
-                  decoration:const BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
-                      topLeft:  Radius.circular(16.0),
+                      topLeft: Radius.circular(16.0),
                       topRight: Radius.circular(16.0),
                     ),
                   ),
                 ),
                 Container(
-                  padding:const EdgeInsets.only(top: 13, left: 8, right: 8),
+                  padding: const EdgeInsets.only(top: 13, left: 8, right: 8),
                   child: ListView.builder(
-                    physics:const BouncingScrollPhysics(),
-                      itemCount: data.length,
-                      itemBuilder: (context, index) {
-                        return Card(
-                          elevation: 0,
-                          color:const Color(0XFFF9F9F9),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: ListTile(
-                            leading: Text('${data[index]['name']}'),
-                            trailing:const Icon(Icons.arrow_forward_ios_rounded),
-                          ),
-                        );
-                      }),
+                    physics: const BouncingScrollPhysics(),
+                    itemCount: data.length,
+                    itemBuilder: (context, index) {
+                      return Card(
+                        elevation: 0,
+                        color: const Color(0XFFF9F9F9),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: ListTile(
+                          leading: Text('${data[index]['name']}'),
+                          trailing: const Icon(Icons.arrow_forward_ios_rounded),
+                        ),
+                      );
+                    },
+                  ),
                 )
               ],
             ),
