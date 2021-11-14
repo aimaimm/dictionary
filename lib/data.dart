@@ -17,6 +17,4 @@ List History = [
   {'name': 'Mind'},
 ];
 
-List category = [
-  {'cat_name': 'Cazy in love'},
-];
+
