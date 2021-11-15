@@ -175,7 +175,7 @@ class _Detail_wordTH_ScreenState extends State<Detail_wordTH_Screen> {
                 children: [
                   SizedBox(
                     width: size.width * 0.055,
-                    height: size.height * 0.07,
+                    height: size.height * 0.05,
                   ),
                   Flexible(
                     child: Text(
