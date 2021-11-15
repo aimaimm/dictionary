@@ -61,6 +61,7 @@ class _Detail_WordEng_ScreenState extends State<Detail_WordEng_Screen> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         shape: const RoundedRectangleBorder(
@@ -83,7 +84,7 @@ class _Detail_WordEng_ScreenState extends State<Detail_WordEng_Screen> {
           },
         ),
         bottom: PreferredSize(
-          preferredSize: Size.fromHeight(120.0),
+          preferredSize: const Size.fromHeight(120.0),
           child: Container(
             padding:
                 const EdgeInsets.only(bottom: 25, right: 20, left: 20, top: 8),
@@ -95,9 +96,9 @@ class _Detail_WordEng_ScreenState extends State<Detail_WordEng_Screen> {
                   children: [
                     Text(
                       check_null('esearch'),
-                      style: const TextStyle(
+                      style: TextStyle(
                           fontFamily: 'DMDisplay',
-                          fontSize: 36,
+                          fontSize: size.width / 16,
                           color: Colors.white),
                     ),
                     const SizedBox(
@@ -140,7 +141,7 @@ class _Detail_WordEng_ScreenState extends State<Detail_WordEng_Screen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    margin: const EdgeInsets.only(top: 8),
+                    margin: EdgeInsets.only(top: size.height * 0.01),
                     child: const CircleAvatar(
                       radius: 5,
                       backgroundColor: Colors.grey,
@@ -149,9 +150,11 @@ class _Detail_WordEng_ScreenState extends State<Detail_WordEng_Screen> {
                   const SizedBox(
                     width: 15,
                   ),
-                  Text(
-                    check_null('tentry'),
-                    style: const TextStyle(fontSize: 16),
+                  Flexible(
+                    child: Text(
+                      check_null('tentry'),
+                      style: TextStyle(fontSize: size.width / 30),
+                    ),
                   ),
                   const SizedBox(
                     height: 6,
@@ -170,7 +173,7 @@ class _Detail_WordEng_ScreenState extends State<Detail_WordEng_Screen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    margin: const EdgeInsets.only(top: 8),
+                    margin: EdgeInsets.only(top: size.height * 0.01),
                     child: const CircleAvatar(
                       radius: 5,
                       backgroundColor: Colors.grey,
@@ -181,7 +184,7 @@ class _Detail_WordEng_ScreenState extends State<Detail_WordEng_Screen> {
                   ),
                   Text(
                     check_null('esyn'),
-                    style: const TextStyle(fontSize: 16),
+                    style: TextStyle(fontSize: size.width / 30),
                   ),
                   const SizedBox(
                     height: 6,
@@ -200,7 +203,7 @@ class _Detail_WordEng_ScreenState extends State<Detail_WordEng_Screen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    margin: const EdgeInsets.only(top: 8),
+                    margin: EdgeInsets.only(top: size.height * 0.01),
                     child: const CircleAvatar(
                       radius: 5,
                       backgroundColor: Colors.grey,
@@ -211,7 +214,7 @@ class _Detail_WordEng_ScreenState extends State<Detail_WordEng_Screen> {
                   ),
                   Text(
                     check_null('eant'),
-                    style: const TextStyle(fontSize: 16),
+                    style: TextStyle(fontSize: size.width / 30),
                   ),
                 ],
               ),

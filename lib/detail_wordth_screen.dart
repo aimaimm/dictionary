@@ -83,6 +83,7 @@ class _Detail_wordTH_ScreenState extends State<Detail_wordTH_Screen> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         shape: const RoundedRectangleBorder(
@@ -117,7 +118,8 @@ class _Detail_wordTH_ScreenState extends State<Detail_wordTH_Screen> {
                   children: [
                     Text(
                       check_null("tentry"),
-                      style: const TextStyle(fontSize: 36, color: Colors.white),
+                      style: TextStyle(
+                          fontSize: size.width / 16, color: Colors.white),
                     ),
                     const SizedBox(
                       height: 5,
@@ -156,30 +158,31 @@ class _Detail_wordTH_ScreenState extends State<Detail_wordTH_Screen> {
               const Divider(),
               Row(
                 children: [
-                  Container(
-                    margin: const EdgeInsets.only(bottom: 21),
-                    child: const CircleAvatar(
-                      radius: 5,
-                      backgroundColor: Colors.grey,
-                    ),
+                  const CircleAvatar(
+                    radius: 5,
+                    backgroundColor: Colors.grey,
                   ),
                   const SizedBox(
                     width: 15,
                   ),
-                  Column(
-                    children: [
-                      Text(
-                        check_null("eentry"),
-                        style: const TextStyle(fontSize: 16),
-                      ),
-                      const SizedBox(
-                        height: 6,
-                      ),
-                      Text(
-                        check_null('tdef'),
-                        style: const TextStyle(color: Colors.black54),
-                      ),
-                    ],
+                  Text(
+                    check_null("eentry"),
+                    style: TextStyle(fontSize: size.width / 30),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: size.width * 0.055,
+                    height: size.height * 0.07,
+                  ),
+                  Flexible(
+                    child: Text(
+                      check_null('tdef'),
+                      style: TextStyle(
+                          color: Colors.black54, fontSize: size.width / 34),
+                    ),
                   ),
                 ],
               ),
@@ -194,7 +197,7 @@ class _Detail_wordTH_ScreenState extends State<Detail_wordTH_Screen> {
               Row(
                 children: [
                   Container(
-                    margin: const EdgeInsets.only(bottom: 21),
+                    margin: EdgeInsets.only(bottom: size.height * 0.02),
                     child: const CircleAvatar(
                       radius: 5,
                       backgroundColor: Colors.grey,
@@ -204,7 +207,10 @@ class _Detail_wordTH_ScreenState extends State<Detail_wordTH_Screen> {
                     width: 15,
                   ),
                   Flexible(
-                    child: Text(check_null('tsample')),
+                    child: Text(
+                      check_null('tsample'),
+                      style: TextStyle(fontSize: size.width / 34),
+                    ),
                   ),
                 ],
               ),
@@ -217,10 +223,14 @@ class _Detail_wordTH_ScreenState extends State<Detail_wordTH_Screen> {
               ),
               const Divider(),
               Row(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  const CircleAvatar(
-                    radius: 5,
-                    backgroundColor: Colors.grey,
+                  Container(
+                    margin: EdgeInsets.only(top: size.height * 0.004),
+                    child: const CircleAvatar(
+                      radius: 5,
+                      backgroundColor: Colors.grey,
+                    ),
                   ),
                   const SizedBox(
                     width: 15,
@@ -239,8 +249,10 @@ class _Detail_wordTH_ScreenState extends State<Detail_wordTH_Screen> {
               ),
               const Divider(),
               Row(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Container(
+                    margin: EdgeInsets.only(top: size.height / 170),
                     child: const CircleAvatar(
                       radius: 5,
                       backgroundColor: Colors.grey,
@@ -250,7 +262,9 @@ class _Detail_wordTH_ScreenState extends State<Detail_wordTH_Screen> {
                     width: 15,
                   ),
                   Flexible(
-                    child: Text(check_null('tant')),
+                    child: Text(
+                      check_null('tant'),
+                    ),
                   ),
                 ],
               ),
@@ -265,6 +279,7 @@ class _Detail_wordTH_ScreenState extends State<Detail_wordTH_Screen> {
               Row(
                 children: [
                   Container(
+                    margin: EdgeInsets.only(top: size.height / 170),
                     child: const CircleAvatar(
                       radius: 5,
                       backgroundColor: Colors.grey,
@@ -274,7 +289,9 @@ class _Detail_wordTH_ScreenState extends State<Detail_wordTH_Screen> {
                     width: 15,
                   ),
                   Flexible(
-                    child: Text(check_null('tenglish')),
+                    child: Text(
+                      check_null('tenglish'),
+                    ),
                   ),
                 ],
               ),
@@ -289,6 +306,7 @@ class _Detail_wordTH_ScreenState extends State<Detail_wordTH_Screen> {
               Row(
                 children: [
                   Container(
+                    margin: EdgeInsets.only(top: size.height / 170),
                     child: const CircleAvatar(
                       radius: 5,
                       backgroundColor: Colors.grey,
@@ -313,6 +331,7 @@ class _Detail_wordTH_ScreenState extends State<Detail_wordTH_Screen> {
               Row(
                 children: [
                   Container(
+                    margin: EdgeInsets.only(top: size.height / 170),
                     child: const CircleAvatar(
                       radius: 5,
                       backgroundColor: Colors.grey,
@@ -322,7 +341,9 @@ class _Detail_wordTH_ScreenState extends State<Detail_wordTH_Screen> {
                     width: 15,
                   ),
                   Flexible(
-                    child: Text(check_null('notes')),
+                    child: Text(
+                      check_null('notes'),
+                    ),
                   ),
                 ],
               ),
