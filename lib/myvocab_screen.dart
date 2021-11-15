@@ -15,13 +15,9 @@ class MyVocab_Screen extends StatefulWidget {
 
 class _MyVocab_ScreenState extends State<MyVocab_Screen> {
   TextEditingController Category_txt = TextEditingController();
-
-_save() async{
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  
-}
-
-
+  List category = [
+    {'cat_name': 'Adore'},
+  ];
   Future<void> InputCategories(BuildContext context) async {
     return showDialog(
       context: context,

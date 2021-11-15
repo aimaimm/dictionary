@@ -1,29 +1,53 @@
+import 'package:dictionary/detail_wordth_screen.dart';
+import 'package:dictionary/search_eng2th_screen.dart';
 import 'package:dictionary/sidebar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class Search_TH2Eng_Screen extends StatefulWidget {
-  const Search_TH2Eng_Screen({Key? key}) : super(key: key);
+  const Search_TH2Eng_Screen(
+      {Key? key, required this.th2eng, required this.eng2th})
+      : super(key: key);
+
+  final List th2eng;
+  final List eng2th;
 
   @override
   _Search_TH2Eng_ScreenState createState() => _Search_TH2Eng_ScreenState();
 }
 
 class _Search_TH2Eng_ScreenState extends State<Search_TH2Eng_Screen> {
-  List data = [
-    {'name': 'สวัสดี'},
-    {'name': 'สวัสดี'},
-    {'name': 'สวัสดี'},
-    {'name': 'สวัสดี'},
-    {'name': 'สวัสดี'},
-    {'name': 'สวัสดี'},
-    {'name': 'สวัสดี'},
-    {'name': 'สวัสดี'},
-    {'name': 'สวัสดี'},
-    {'name': 'สวัสดี'},
-    {'name': 'สวัสดี'},
-    {'name': 'สวัสดี'},
-  ];
+  var items = [];
+
+  @override
+  void initState() {
+    items.addAll(widget.th2eng);
+    super.initState();
+  }
+
+  void filterSearchResults(query) {
+    List dummySearchList = [];
+    dummySearchList.addAll(widget.th2eng);
+    if (query.isNotEmpty) {
+      List<dynamic> dummyListData = [];
+      dummySearchList.forEach((item) {
+        if (item['tentry'] == query) {
+          dummyListData.add(item);
+        }
+      });
+
+      setState(() {
+        items.clear();
+        items.addAll(dummyListData);
+      });
+      return;
+    } else {
+      setState(() {
+        items.clear();
+        items.addAll(widget.th2eng);
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +86,16 @@ class _Search_TH2Eng_ScreenState extends State<Search_TH2Eng_Screen> {
           Container(
             padding: const EdgeInsets.only(top: 8, right: 8, bottom: 8),
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Search_eng_Screen(
+                        th2eng: widget.th2eng,
+                        eng2th: widget.eng2th,
+                      ),
+                    ));
+              },
               child: const Text(
                 'ENG-TH',
                 style: TextStyle(color: Colors.black),
@@ -93,6 +126,11 @@ class _Search_TH2Eng_ScreenState extends State<Search_TH2Eng_Screen> {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.06,
                   child: TextField(
+                    onChanged: (value) {
+                      // print(value);
+
+                      filterSearchResults(value);
+                    },
                     decoration: InputDecoration(
                       hintText: 'Search word',
                       hintStyle: const TextStyle(fontSize: 13),
@@ -130,17 +168,35 @@ class _Search_TH2Eng_ScreenState extends State<Search_TH2Eng_Screen> {
                   padding: const EdgeInsets.only(top: 13, left: 8, right: 8),
                   child: ListView.builder(
                     physics: const BouncingScrollPhysics(),
-                    itemCount: data.length,
+                    itemCount: items.length,
                     itemBuilder: (context, index) {
-                      return Card(
-                        elevation: 0,
-                        color: const Color(0XFFF9F9F9),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: ListTile(
-                          leading: Text('${data[index]['name']}'),
-                          trailing: const Icon(Icons.arrow_forward_ios_rounded),
+                      return InkWell(
+                        onTap: () {
+                          
+                          // var test = items[index];
+                          // print(index);
+                          // print(items[index].runtimeType);
+                          // print(items[index]);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Detail_wordTH_Screen(
+                                wordth: items[index],
+                              ),
+                            ),
+                          );
+                        },
+                        child: Card(
+                          elevation: 0,
+                          color: const Color(0XFFF9F9F9),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: ListTile(
+                            leading: Text('${items[index]['tentry']}'),
+                            trailing:
+                                const Icon(Icons.arrow_forward_ios_rounded),
+                          ),
                         ),
                       );
                     },

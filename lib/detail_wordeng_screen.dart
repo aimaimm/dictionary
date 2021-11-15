@@ -1,13 +1,64 @@
 import 'package:flutter/material.dart';
 
 class Detail_WordEng_Screen extends StatefulWidget {
-  const Detail_WordEng_Screen({Key? key}) : super(key: key);
+  const Detail_WordEng_Screen({
+    Key? key,
+    required this.wordeng,
+  }) : super(key: key);
+
+  final wordeng;
 
   @override
   _Detail_WordEng_ScreenState createState() => _Detail_WordEng_ScreenState();
 }
 
 class _Detail_WordEng_ScreenState extends State<Detail_WordEng_Screen> {
+  String check_null(String mode) {
+    if (mode == "esearch") {
+      if (widget.wordeng['esearch'] == null) {
+        return '-';
+      } else {
+        return widget.wordeng['esearch'];
+      }
+    } else if (mode == "eentry") {
+      if (widget.wordeng['eentry'] == null) {
+        return '-';
+      } else {
+        return widget.wordeng['eentry'];
+      }
+    } else if (mode == "tentry") {
+      if (widget.wordeng['tentry'] == null) {
+        return '-';
+      } else {
+        return widget.wordeng['tentry'];
+      }
+    } else if (mode == "ecat") {
+      if (widget.wordeng['ecat'] == null) {
+        return '-';
+      } else {
+        return widget.wordeng['ecat'];
+      }
+    } else if (mode == "esyn") {
+      if (widget.wordeng['esyn'] == null) {
+        return '-';
+      } else {
+        return widget.wordeng['esyn'];
+      }
+    } else if (mode == "ethai") {
+      if (widget.wordeng['ethai'] == null) {
+        return '-';
+      } else {
+        return widget.wordeng['ethai'];
+      }
+    } else {
+      if (widget.wordeng['eant'] == null) {
+        return '-';
+      } else {
+        return widget.wordeng['eant'];
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,20 +92,20 @@ class _Detail_WordEng_ScreenState extends State<Detail_WordEng_Screen> {
               children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
+                  children: [
                     Text(
-                      'ability',
-                      style: TextStyle(
+                      check_null('esearch'),
+                      style: const TextStyle(
                           fontFamily: 'DMDisplay',
                           fontSize: 36,
                           color: Colors.white),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
                     Text(
-                      '/N',
-                      style: TextStyle(
+                      '/${check_null('ecat')}',
+                      style: const TextStyle(
                         color: Color(0XFFDBFF00),
                       ),
                     )
@@ -74,93 +125,93 @@ class _Detail_WordEng_ScreenState extends State<Detail_WordEng_Screen> {
         ),
       ),
       body: SingleChildScrollView(
-        physics:const BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         child: Padding(
           padding: const EdgeInsets.all(23.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-             const Text(
+              const Text(
                 'DEFINITION',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-            const  Divider(),
+              const Divider(),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    margin:const EdgeInsets.only(top: 8),
-                    child:const CircleAvatar(
+                    margin: const EdgeInsets.only(top: 8),
+                    child: const CircleAvatar(
                       radius: 5,
                       backgroundColor: Colors.grey,
                     ),
                   ),
-                 const SizedBox(
+                  const SizedBox(
                     width: 15,
                   ),
-                 const Text(
-                    'พรสวรรค์ \nที่คงอยู่ตลอดไป',
-                    style: TextStyle(fontSize: 16),
+                  Text(
+                    check_null('tentry'),
+                    style: const TextStyle(fontSize: 16),
                   ),
-                 const SizedBox(
+                  const SizedBox(
                     height: 6,
                   ),
                 ],
               ),
-             const SizedBox(
+              const SizedBox(
                 height: 23,
               ),
-            const Text(
+              const Text(
                 'SYNONYMS',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-             const Divider(),
+              const Divider(),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    margin:const EdgeInsets.only(top: 8),
-                    child:const CircleAvatar(
+                    margin: const EdgeInsets.only(top: 8),
+                    child: const CircleAvatar(
                       radius: 5,
                       backgroundColor: Colors.grey,
                     ),
                   ),
-                const SizedBox(
+                  const SizedBox(
                     width: 15,
                   ),
-                 const Text(
-                    'talent (N.)',
-                    style: TextStyle(fontSize: 16),
+                  Text(
+                    check_null('esyn'),
+                    style: const TextStyle(fontSize: 16),
                   ),
-                 const SizedBox(
+                  const SizedBox(
                     height: 6,
                   ),
                 ],
               ),
-            const SizedBox(
+              const SizedBox(
                 height: 23,
               ),
-             const Text(
+              const Text(
                 'ANTONYMS',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-             const Divider(),
+              const Divider(),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    margin:const EdgeInsets.only(top: 8),
-                    child:const CircleAvatar(
+                    margin: const EdgeInsets.only(top: 8),
+                    child: const CircleAvatar(
                       radius: 5,
                       backgroundColor: Colors.grey,
                     ),
                   ),
-                 const SizedBox(
+                  const SizedBox(
                     width: 15,
                   ),
-                 const Text(
-                    'inability',
-                    style: TextStyle(fontSize: 16),
+                  Text(
+                    check_null('eant'),
+                    style: const TextStyle(fontSize: 16),
                   ),
                 ],
               ),

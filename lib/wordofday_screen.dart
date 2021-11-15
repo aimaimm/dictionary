@@ -1,18 +1,37 @@
+import 'package:dictionary/search_eng2th_screen.dart';
+import 'package:dictionary/search_th2eng.dart';
 import 'package:dictionary/sidebar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flip_card/flip_card.dart';
 
 class WordOfDay_Screen extends StatefulWidget {
-  const WordOfDay_Screen({Key? key}) : super(key: key);
+  const WordOfDay_Screen(
+      {Key? key,
+      required this.eng2th,
+      required this.th2eng,
+      required this.wordofthedayeng2th,
+      required this.wordofthedayth2eng,
+      required this.lang_mode})
+      : super(key: key);
+
+  final List eng2th;
+  final List th2eng;
+  final List wordofthedayeng2th;
+  final List wordofthedayth2eng;
+  final int lang_mode;
 
   @override
   _WordOfDay_ScreenState createState() => _WordOfDay_ScreenState();
 }
 
+
 class _WordOfDay_ScreenState extends State<WordOfDay_Screen> {
+
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -45,6 +64,29 @@ class _WordOfDay_ScreenState extends State<WordOfDay_Screen> {
             margin: const EdgeInsets.all(28),
             height: 55,
             child: TextField(
+              onTap: () {
+                if (widget.lang_mode == 0) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Search_TH2Eng_Screen(
+                        th2eng: widget.th2eng,
+                        eng2th: widget.eng2th,
+                      ),
+                    ),
+                  );
+                } else {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Search_eng_Screen(
+                        th2eng: widget.th2eng,
+                        eng2th: widget.eng2th,
+                      ),
+                    ),
+                  );
+                }
+              },
               decoration: InputDecoration(
                 hintText: 'Search word',
                 hintStyle: const TextStyle(fontSize: 13),
@@ -77,16 +119,19 @@ class _WordOfDay_ScreenState extends State<WordOfDay_Screen> {
                     ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Text(
-                          'Abandon',
-                          style: TextStyle(
-                              fontFamily: 'DMDisplay',
-                              color: Colors.black,
-                              fontSize: 28,
-                              fontWeight: FontWeight.w600),
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Text(
+                            '${widget.wordofthedayeng2th[0]['esearch']}',
+                            style:  TextStyle(
+                                fontFamily: 'DMDisplay',
+                                color: Colors.black,
+                                fontSize: size.width/19,
+                                fontWeight: FontWeight.w600),
+                          ),
                         ),
-                        Text('/ADV')
+                        Text('/ ${widget.wordofthedayeng2th[0]['ecat']}')
                       ],
                     ),
                   ]),
@@ -101,13 +146,16 @@ class _WordOfDay_ScreenState extends State<WordOfDay_Screen> {
                           color: Colors.blue.shade800,
                         ),
                       ),
-                      const Text(
-                        'ละทิ้ง',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 28,
-                        ),
-                      ),
+                       Padding(
+                         padding: const EdgeInsets.all(12.0),
+                         child: Text(
+                          '${widget.wordofthedayeng2th[0]['tentry']}',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: size.width / 30,
+                          ),
+                                             ),
+                       ),
                     ],
                   ),
                 ),
@@ -129,16 +177,19 @@ class _WordOfDay_ScreenState extends State<WordOfDay_Screen> {
                     ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Text(
-                          'จากไป',
-                          style: TextStyle(
-                              fontFamily: 'DMDisplay',
-                              color: Colors.black,
-                              fontSize: 28,
-                              fontWeight: FontWeight.w600),
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Text(
+                            '${widget.wordofthedayth2eng[0]['tentry']}',
+                            style: TextStyle(
+                                fontFamily: 'DMDisplay',
+                                color: Colors.black,
+                                fontSize: size.width/24,
+                                fontWeight: FontWeight.w600),
+                          ),
                         ),
-                        Text('/Noun')
+                        Text('/ ${widget.wordofthedayth2eng[0]['tcat']}')
                       ],
                     ),
                   ]),
@@ -152,13 +203,16 @@ class _WordOfDay_ScreenState extends State<WordOfDay_Screen> {
                           color: Colors.blue.shade800,
                         ),
                       ),
-                      const Text(
-                        'Abandon',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 28,
-                        ),
+                       Padding(
+                         padding: const EdgeInsets.all(12.0),
+                         child: Text(
+                          '${widget.wordofthedayth2eng[0]['eentry']}',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: size.width / 30,
+                          ),
                       ),
+                       ),
                     ],
                   ),
                 ),
