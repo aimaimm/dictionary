@@ -95,7 +95,7 @@ class _Search_eng_ScreenState extends State<Search_eng_Screen> {
                 'TH-ENG',
                 style: btn_change == 1
                     ? const TextStyle(color: Colors.black)
-                    : TextStyle(color: Colors.grey[200]),
+                    : TextStyle(color: Colors.grey[300]),
               ),
               style: TextButton.styleFrom(backgroundColor: Colors.white),
             ),

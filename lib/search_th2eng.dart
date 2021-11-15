@@ -76,14 +76,10 @@ class _Search_TH2Eng_ScreenState extends State<Search_TH2Eng_Screen> {
             padding:
                 const EdgeInsets.only(top: 8, bottom: 8, left: 8, right: 1),
             child: TextButton(
-              onPressed: () {
-                setState(() {
-                  btn_change = 1;
-                });
-              },
-              child:const Text(
+              onPressed: () {},
+              child: const Text(
                 'TH-ENG',
-                style:  TextStyle(color: Colors.black),
+                style: TextStyle(color: Colors.black),
               ),
               style: TextButton.styleFrom(backgroundColor: Colors.white),
             ),
@@ -105,7 +101,7 @@ class _Search_TH2Eng_ScreenState extends State<Search_TH2Eng_Screen> {
                 'ENG-TH',
                 style: btn_change == 1
                     ? TextStyle(color: Colors.black)
-                    : TextStyle(color: Colors.grey[200]),
+                    : TextStyle(color: Colors.grey[300]),
               ),
               style: TextButton.styleFrom(backgroundColor: Colors.white),
             ),
