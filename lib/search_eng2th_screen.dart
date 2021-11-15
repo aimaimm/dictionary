@@ -56,6 +56,7 @@ class _Search_eng_ScreenState extends State<Search_eng_Screen> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -121,12 +122,12 @@ class _Search_eng_ScreenState extends State<Search_eng_Screen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
+                Text(
                   'Dictionary',
                   style: TextStyle(
                       fontFamily: 'DMDisplay',
                       color: Colors.white,
-                      fontSize: 36),
+                      fontSize: size.width * 0.098),
                 ),
                 const SizedBox(
                   height: 15,

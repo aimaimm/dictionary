@@ -42,10 +42,9 @@ class _FirstPageState extends State<FirstPage> {
               builder: (context) => WordOfDay_Screen(
                     eng2th: eng2th!,
                     th2eng: th2eng!,
-                    lang_mode: 0, 
+                    lang_mode: 0,
                     wordofthedayeng2th: wordofthedayeng2th!,
-                    wordofthedayth2eng: wordofthedayth2eng! 
-                    ,
+                    wordofthedayth2eng: wordofthedayth2eng!,
                   )),
           (route) => false);
     });
@@ -65,8 +64,8 @@ class _FirstPageState extends State<FirstPage> {
               child: Stack(
                 children: [
                   Positioned(
-                    top: MediaQuery.of(context).size.height * 0.25,
-                    left: MediaQuery.of(context).size.width * 0.26,
+                    top: MediaQuery.of(context).size.height * 0.255,
+                    left: MediaQuery.of(context).size.width * 0.265,
                     child: const Text(
                       'Dictio',
                       style: TextStyle(
@@ -76,7 +75,7 @@ class _FirstPageState extends State<FirstPage> {
                     ),
                   ),
                   Positioned(
-                    top: MediaQuery.of(context).size.height * 0.38,
+                    top: MediaQuery.of(context).size.height * 0.385,
                     right: MediaQuery.of(context).size.width * 0.27,
                     child: const Text(
                       'onary',
