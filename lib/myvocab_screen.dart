@@ -4,6 +4,7 @@ import 'package:dictionary/data.dart';
 import 'package:dictionary/sidebar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MyVocab_Screen extends StatefulWidget {
   const MyVocab_Screen({Key? key}) : super(key: key);
@@ -14,7 +15,12 @@ class MyVocab_Screen extends StatefulWidget {
 
 class _MyVocab_ScreenState extends State<MyVocab_Screen> {
   TextEditingController Category_txt = TextEditingController();
- 
+
+_save() async{
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  
+}
+
 
   Future<void> InputCategories(BuildContext context) async {
     return showDialog(
@@ -69,7 +75,10 @@ class _MyVocab_ScreenState extends State<MyVocab_Screen> {
                           //print(Category_txt.text);
                           Navigator.pop(context);
                           setState(() {
-                            category.add({'cat_name': Category_txt.text});
+                            category.add({
+                              'cat_name': Category_txt.text,
+                              'isChecked': false
+                            });
                             Category_txt.clear();
                           });
                           print(category);
