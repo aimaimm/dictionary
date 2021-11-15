@@ -21,6 +21,7 @@ class Search_eng_Screen extends StatefulWidget {
 }
 
 class _Search_eng_ScreenState extends State<Search_eng_Screen> {
+  int btn_change = 0;
   var items = [];
   db_dic helper = db_dic();
   @override
@@ -90,9 +91,11 @@ class _Search_eng_ScreenState extends State<Search_eng_Screen> {
                   ),
                 );
               },
-              child: const Text(
+              child: Text(
                 'TH-ENG',
-                style: TextStyle(color: Colors.black),
+                style: btn_change == 1
+                    ? const TextStyle(color: Colors.black)
+                    : TextStyle(color: Colors.grey[200]),
               ),
               style: TextButton.styleFrom(backgroundColor: Colors.white),
             ),

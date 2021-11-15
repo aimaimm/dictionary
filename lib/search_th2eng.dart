@@ -18,6 +18,7 @@ class Search_TH2Eng_Screen extends StatefulWidget {
 
 class _Search_TH2Eng_ScreenState extends State<Search_TH2Eng_Screen> {
   var items = [];
+  int btn_change = 0;
 
   @override
   void initState() {
@@ -75,10 +76,14 @@ class _Search_TH2Eng_ScreenState extends State<Search_TH2Eng_Screen> {
             padding:
                 const EdgeInsets.only(top: 8, bottom: 8, left: 8, right: 1),
             child: TextButton(
-              onPressed: () {},
-              child: const Text(
+              onPressed: () {
+                setState(() {
+                  btn_change = 1;
+                });
+              },
+              child:const Text(
                 'TH-ENG',
-                style: TextStyle(color: Colors.black),
+                style:  TextStyle(color: Colors.black),
               ),
               style: TextButton.styleFrom(backgroundColor: Colors.white),
             ),
@@ -96,9 +101,11 @@ class _Search_TH2Eng_ScreenState extends State<Search_TH2Eng_Screen> {
                       ),
                     ));
               },
-              child: const Text(
+              child: Text(
                 'ENG-TH',
-                style: TextStyle(color: Colors.black),
+                style: btn_change == 1
+                    ? TextStyle(color: Colors.black)
+                    : TextStyle(color: Colors.grey[200]),
               ),
               style: TextButton.styleFrom(backgroundColor: Colors.white),
             ),
@@ -172,7 +179,6 @@ class _Search_TH2Eng_ScreenState extends State<Search_TH2Eng_Screen> {
                     itemBuilder: (context, index) {
                       return InkWell(
                         onTap: () {
-                          
                           // var test = items[index];
                           // print(index);
                           // print(items[index].runtimeType);
