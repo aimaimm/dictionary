@@ -105,7 +105,7 @@ class _Detail_WordEng_ScreenState extends State<Detail_WordEng_Screen> {
                       height: 5,
                     ),
                     Text(
-                      '/${check_null('ecat')}',
+                      '/ ${check_null('ecat')}',
                       style: const TextStyle(
                         color: Color(0XFFDBFF00),
                       ),

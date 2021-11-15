@@ -125,7 +125,7 @@ class _Detail_wordTH_ScreenState extends State<Detail_wordTH_Screen> {
                       height: 5,
                     ),
                     Text(
-                      '/${check_null("tcat")}',
+                      '/ ${check_null("tcat")}',
                       style: const TextStyle(
                         color: Color(0XFFDBFF00),
                       ),
