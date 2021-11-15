@@ -1,13 +1,86 @@
 import 'package:flutter/material.dart';
 
 class Detail_wordTH_Screen extends StatefulWidget {
-  const Detail_wordTH_Screen({Key? key}) : super(key: key);
+  const Detail_wordTH_Screen({Key? key, required this.wordth})
+      : super(key: key);
+
+  final wordth;
 
   @override
   _Detail_wordTH_ScreenState createState() => _Detail_wordTH_ScreenState();
 }
 
 class _Detail_wordTH_ScreenState extends State<Detail_wordTH_Screen> {
+  String check_null(String mode) {
+    if (mode == "tsearch") {
+      if (widget.wordth['tsearch'] == null) {
+        return '-';
+      } else {
+        return widget.wordth['tsearch'];
+      }
+    } else if (mode == "tentry") {
+      if (widget.wordth['tentry'] == null) {
+        return '-';
+      } else {
+        return widget.wordth['tentry'];
+      }
+    } else if (mode == "eentry") {
+      if (widget.wordth['eentry'] == null) {
+        return '-';
+      } else {
+        return widget.wordth['eentry'];
+      }
+    } else if (mode == "tcat") {
+      if (widget.wordth['tcat'] == null) {
+        return '-';
+      } else {
+        return widget.wordth['tcat'];
+      }
+    } else if (mode == "tsyn") {
+      if (widget.wordth['tsyn'] == null) {
+        return '-';
+      } else {
+        return widget.wordth['tsyn'];
+      }
+    } else if (mode == "tsample") {
+      if (widget.wordth['tsample'] == null) {
+        return '-';
+      } else {
+        return widget.wordth['tsample'];
+      }
+    } else if (mode == "tant") {
+      if (widget.wordth['tant'] == null) {
+        return '-';
+      } else {
+        return widget.wordth['tant'];
+      }
+    } else if (mode == "tdef") {
+      if (widget.wordth['tdef'] == null) {
+        return '-';
+      } else {
+        return widget.wordth['tdef'];
+      }
+    } else if (mode == "tenglish") {
+      if (widget.wordth['tenglish'] == null) {
+        return '-';
+      } else {
+        return widget.wordth['tenglish'];
+      }
+    } else if (mode == "tnum") {
+      if (widget.wordth['tnum'] == null) {
+        return '-';
+      } else {
+        return widget.wordth['tnum'];
+      }
+    } else {
+      if (widget.wordth['notes'] == null) {
+        return '-';
+      } else {
+        return widget.wordth['notes'];
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,17 +114,17 @@ class _Detail_wordTH_ScreenState extends State<Detail_wordTH_Screen> {
               children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
+                  children: [
                     Text(
-                      'ตามกฎหมาย',
-                      style: TextStyle(fontSize: 36, color: Colors.white),
+                      check_null("tentry"),
+                      style: const TextStyle(fontSize: 36, color: Colors.white),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
                     Text(
-                      '/ADV',
-                      style: TextStyle(
+                      '/${check_null("tcat")}',
+                      style: const TextStyle(
                         color: Color(0XFFDBFF00),
                       ),
                     )
@@ -70,7 +143,7 @@ class _Detail_wordTH_ScreenState extends State<Detail_wordTH_Screen> {
         ),
       ),
       body: SingleChildScrollView(
-        physics:const BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         child: Padding(
           padding: const EdgeInsets.all(23.0),
           child: Column(
@@ -94,17 +167,17 @@ class _Detail_wordTH_ScreenState extends State<Detail_wordTH_Screen> {
                     width: 15,
                   ),
                   Column(
-                    children: const [
+                    children: [
                       Text(
-                        'Aloha',
-                        style: TextStyle(fontSize: 16),
+                        check_null("eentry"),
+                        style: const TextStyle(fontSize: 16),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 6,
                       ),
                       Text(
-                        'สวัสดี',
-                        style: TextStyle(color: Colors.black54),
+                        check_null('tdef'),
+                        style: const TextStyle(color: Colors.black54),
                       ),
                     ],
                   ),
@@ -130,9 +203,8 @@ class _Detail_wordTH_ScreenState extends State<Detail_wordTH_Screen> {
                   const SizedBox(
                     width: 15,
                   ),
-                  const Flexible(
-                    child: Text(
-                        'หนังสือลาออกของนายพรพจน์ยังไม่ทันมีผลตามกฎหมายเรื่องราวก็จบลงเสียก่อน'),
+                  Flexible(
+                    child: Text(check_null('tsample')),
                   ),
                 ],
               ),
@@ -145,16 +217,16 @@ class _Detail_wordTH_ScreenState extends State<Detail_wordTH_Screen> {
               ),
               const Divider(),
               Row(
-                children: const [
-                  CircleAvatar(
+                children: [
+                  const CircleAvatar(
                     radius: 5,
                     backgroundColor: Colors.grey,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 15,
                   ),
                   Flexible(
-                    child: Text('โดยชอบด้วยกฎหมาย'),
+                    child: Text(check_null('tsyn')),
                   ),
                 ],
               ),
@@ -177,8 +249,8 @@ class _Detail_wordTH_ScreenState extends State<Detail_wordTH_Screen> {
                   const SizedBox(
                     width: 15,
                   ),
-                  const Flexible(
-                    child: Text('-'),
+                  Flexible(
+                    child: Text(check_null('tant')),
                   ),
                 ],
               ),
@@ -201,8 +273,8 @@ class _Detail_wordTH_ScreenState extends State<Detail_wordTH_Screen> {
                   const SizedBox(
                     width: 15,
                   ),
-                  const Flexible(
-                    child: Text('according to the law; legally	'),
+                  Flexible(
+                    child: Text(check_null('tenglish')),
                   ),
                 ],
               ),
@@ -225,8 +297,8 @@ class _Detail_wordTH_ScreenState extends State<Detail_wordTH_Screen> {
                   const SizedBox(
                     width: 15,
                   ),
-                  const Flexible(
-                    child: Text('-'),
+                  Flexible(
+                    child: Text(check_null('tnum')),
                   ),
                 ],
               ),
@@ -249,8 +321,8 @@ class _Detail_wordTH_ScreenState extends State<Detail_wordTH_Screen> {
                   const SizedBox(
                     width: 15,
                   ),
-                  const Flexible(
-                    child: Text('-'),
+                  Flexible(
+                    child: Text(check_null('notes')),
                   ),
                 ],
               ),

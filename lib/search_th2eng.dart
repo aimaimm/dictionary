@@ -1,3 +1,4 @@
+import 'package:dictionary/detail_wordth_screen.dart';
 import 'package:dictionary/search_eng2th_screen.dart';
 import 'package:dictionary/sidebar_widget.dart';
 import 'package:flutter/material.dart';
@@ -169,15 +170,33 @@ class _Search_TH2Eng_ScreenState extends State<Search_TH2Eng_Screen> {
                     physics: const BouncingScrollPhysics(),
                     itemCount: items.length,
                     itemBuilder: (context, index) {
-                      return Card(
-                        elevation: 0,
-                        color: const Color(0XFFF9F9F9),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: ListTile(
-                          leading: Text('${items[index]['tentry']}'),
-                          trailing: const Icon(Icons.arrow_forward_ios_rounded),
+                      return InkWell(
+                        onTap: () {
+                          
+                          // var test = items[index];
+                          // print(index);
+                          // print(items[index].runtimeType);
+                          // print(items[index]);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Detail_wordTH_Screen(
+                                wordth: items[index],
+                              ),
+                            ),
+                          );
+                        },
+                        child: Card(
+                          elevation: 0,
+                          color: const Color(0XFFF9F9F9),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: ListTile(
+                            leading: Text('${items[index]['tentry']}'),
+                            trailing:
+                                const Icon(Icons.arrow_forward_ios_rounded),
+                          ),
                         ),
                       );
                     },
