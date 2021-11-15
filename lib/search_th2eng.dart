@@ -1,7 +1,11 @@
+import 'dart:convert';
+
+import 'package:dictionary/data.dart';
 import 'package:dictionary/search_eng2th_screen.dart';
 import 'package:dictionary/sidebar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Search_TH2Eng_Screen extends StatefulWidget {
   const Search_TH2Eng_Screen(
@@ -17,6 +21,41 @@ class Search_TH2Eng_Screen extends StatefulWidget {
 
 class _Search_TH2Eng_ScreenState extends State<Search_TH2Eng_Screen> {
   var items = [];
+
+  List history = [];
+
+  void historywordth(item) async {
+    SharedPreferences prefsth = await SharedPreferences.getInstance();
+
+    String? wordall = prefsth.getString('k_wordth');
+
+    if (wordall == null) {
+      String json = jsonEncode(item);
+      prefsth.setString('k_wordth', json);
+      // print(jsonDecode(prefs.getString('k_word').toString()).runtimeType);
+
+    } else {
+      var word = jsonDecode(wordall);
+      // var test = word.runtimeType;
+      print(word.runtimeType);
+      if (word is Map<String, dynamic>) {
+        history.add(word);
+        history.add(item);
+
+        String json = jsonEncode(history);
+        prefsth.setString('k_wordth', json);
+      } else if (word is List) {
+        history.clear();
+        history = word;
+        history.add(item);
+
+        String json = jsonEncode(history);
+        prefsth.setString('k_wordth', json);
+      }
+
+      print(history);
+    }
+  }
 
   @override
   void initState() {
@@ -169,15 +208,21 @@ class _Search_TH2Eng_ScreenState extends State<Search_TH2Eng_Screen> {
                     physics: const BouncingScrollPhysics(),
                     itemCount: items.length,
                     itemBuilder: (context, index) {
-                      return Card(
-                        elevation: 0,
-                        color: const Color(0XFFF9F9F9),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: ListTile(
-                          leading: Text('${items[index]['tentry']}'),
-                          trailing: const Icon(Icons.arrow_forward_ios_rounded),
+                      return InkWell(
+                        onTap: () {
+                          historywordth(items);
+                        },
+                        child: Card(
+                          elevation: 0,
+                          color: const Color(0XFFF9F9F9),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: ListTile(
+                            leading: Text('${items[index]['tentry']}'),
+                            trailing:
+                                const Icon(Icons.arrow_forward_ios_rounded),
+                          ),
                         ),
                       );
                     },

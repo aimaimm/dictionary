@@ -1,10 +1,12 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:dictionary/db_dic.dart';
 import 'package:dictionary/search_th2eng.dart';
 import 'package:dictionary/sidebar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqlite_api.dart';
 
 class Search_eng_Screen extends StatefulWidget {
@@ -21,6 +23,50 @@ class Search_eng_Screen extends StatefulWidget {
 
 class _Search_eng_ScreenState extends State<Search_eng_Screen> {
   var items = [];
+  List history = [];
+
+  void historyword(item) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    String? wordall = prefs.getString('k_wordeng');
+    // String json = jsonEncode(item);
+    // List? history = jsonDecode(json);
+
+    // Map? history = jsonDecode(wordall.toString());
+
+    if (wordall == null) {
+      String json = jsonEncode(item);
+      prefs.setString('k_wordeng', json);
+      // print(jsonDecode(prefs.getString('k_word').toString()).runtimeType);
+
+    } else {
+      var word = jsonDecode(wordall);
+      // var test = word.runtimeType;
+      print(word.runtimeType);
+      if (word is Map<String, dynamic>) {
+        history.add(word);
+        history.add(item);
+
+        String json = jsonEncode(history);
+        prefs.setString('k_wordeng', json);
+      } else if (word is List) {
+        history.clear();
+        history = word;
+        history.add(item);
+
+        String json = jsonEncode(history);
+        prefs.setString('k_wordeng', json);
+      }
+
+      print(history);
+    }
+  }
+
+  void clear() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.clear();
+  }
+
   db_dic helper = db_dic();
   @override
   void initState() {
@@ -117,12 +163,17 @@ class _Search_eng_ScreenState extends State<Search_eng_Screen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'Dictionary',
-                  style: TextStyle(
-                      fontFamily: 'DMDisplay',
-                      color: Colors.white,
-                      fontSize: 36),
+                TextButton(
+                  onPressed: () {
+                    clear();
+                  },
+                  child: const Text(
+                    'Dictionary',
+                    style: TextStyle(
+                        fontFamily: 'DMDisplay',
+                        color: Colors.white,
+                        fontSize: 36),
+                  ),
                 ),
                 const SizedBox(
                   height: 15,
@@ -189,15 +240,21 @@ class _Search_eng_ScreenState extends State<Search_eng_Screen> {
                     physics: const BouncingScrollPhysics(),
                     itemCount: items.length,
                     itemBuilder: (context, index) {
-                      return Card(
-                        elevation: 0,
-                        color: const Color(0XFFF9F9F9),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: ListTile(
-                          leading: Text('${items[index]['esearch']}'),
-                          trailing: const Icon(Icons.arrow_forward_ios_rounded),
+                      return InkWell(
+                        onTap: () {
+                          historyword(items[index]);
+                        },
+                        child: Card(
+                          elevation: 0,
+                          color: const Color(0XFFF9F9F9),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: ListTile(
+                            leading: Text('${items[index]['esearch']}'),
+                            trailing:
+                                const Icon(Icons.arrow_forward_ios_rounded),
+                          ),
                         ),
                       );
                     },

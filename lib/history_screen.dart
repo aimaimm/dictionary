@@ -2,6 +2,7 @@ import 'package:dictionary/data.dart';
 import 'package:dictionary/sidebar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class History_Screen extends StatefulWidget {
   const History_Screen({Key? key}) : super(key: key);
@@ -11,14 +12,25 @@ class History_Screen extends StatefulWidget {
 }
 
 class _History_ScreenState extends State<History_Screen> {
+
+  String? engword;
+
+  @override
+    void historyword() async {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      engword = prefs.getString('k_wordeng');
+      print(engword);
+    }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        shape:const RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(20.0),
-            bottomRight:  Radius.circular(20.0),
+            bottomRight: Radius.circular(20.0),
           ),
         ),
         automaticallyImplyLeading: false,
@@ -37,14 +49,14 @@ class _History_ScreenState extends State<History_Screen> {
           ),
         ),
         bottom: PreferredSize(
-          preferredSize:const Size.fromHeight(80.0),
+          preferredSize: const Size.fromHeight(80.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
-                padding:
-                   const EdgeInsets.only(bottom: 25, right: 20, left: 20, top: 8),
-                child:const Text(
+                padding: const EdgeInsets.only(
+                    bottom: 25, right: 20, left: 20, top: 8),
+                child: const Text(
                   'History',
                   style: TextStyle(
                       fontFamily: 'DMDisplay',
@@ -61,19 +73,19 @@ class _History_ScreenState extends State<History_Screen> {
         padding: const EdgeInsets.all(20.0),
         child: ListView(
           //physics: ScrollPhysics(),
-          physics:const BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           children: [
-           const Text(
+            const Text(
               'Most Search',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
-          const  SizedBox(
+            const SizedBox(
               height: 10,
             ),
             ListView.builder(
                 primary: false,
                 shrinkWrap: true,
-                physics:const NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 itemCount: most.length,
                 itemBuilder: (context, index) {
                   return Card(
@@ -84,25 +96,25 @@ class _History_ScreenState extends State<History_Screen> {
                     ),
                     child: ListTile(
                       leading: Text('${most[index]['name']}'),
-                      trailing:const Icon(Icons.arrow_forward_ios_rounded),
+                      trailing: const Icon(Icons.arrow_forward_ios_rounded),
                     ),
                   );
                 }),
-          const  SizedBox(
+            const SizedBox(
               height: 10,
             ),
-           const Text(
+            const Text(
               'History',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
-           const SizedBox(
+            const SizedBox(
               height: 10,
             ),
             ListView.builder(
                 primary: false,
                 shrinkWrap: true,
-                physics:const NeverScrollableScrollPhysics(),
-                itemCount: History.length,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: 1,
                 itemBuilder: (context, index) {
                   return Card(
                     elevation: 0,
@@ -111,8 +123,8 @@ class _History_ScreenState extends State<History_Screen> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: ListTile(
-                      leading: Text('${History[index]['name']}'),
-                      trailing:const Icon(Icons.arrow_forward_ios_rounded),
+                      leading: Text('$engword'),
+                      trailing: const Icon(Icons.arrow_forward_ios_rounded),
                     ),
                   );
                 })
