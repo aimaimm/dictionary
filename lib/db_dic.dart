@@ -65,6 +65,17 @@ class db_dic {
     // print(resultth2eng);
   }
 
+  wordofthedayeng2th() async {
+    List wordofdaythedayeng2th = 
+    await _db.rawQuery('SELECT * FROM eng2th ORDER BY RANDOM() LIMIT 1');
+    return wordofdaythedayeng2th;
+  }
+
+  worofthedayth2eng() async {
+    List wordofthedayth2eng = await _db.rawQuery('SELECT * FROM th2eng ORDER BY RANDOM() LIMIT 1');
+    return wordofthedayth2eng;
+  }
+
   void closeDB() async {
     await _db.close();
     print('DB Closed');

@@ -14,6 +14,8 @@ class FirstPage extends StatefulWidget {
 class _FirstPageState extends State<FirstPage> {
   List? eng2th;
   List? th2eng;
+  List? wordofthedayeng2th;
+  List? wordofthedayth2eng;
   final db_dic _helper = db_dic();
 
   @override
@@ -23,6 +25,9 @@ class _FirstPageState extends State<FirstPage> {
     Timer(const Duration(seconds: 1), () async {
       eng2th = await _helper.getAllDataEng2th();
       th2eng = await _helper.getAllDatath2Eng();
+      wordofthedayeng2th = await _helper.wordofthedayeng2th();
+      wordofthedayth2eng = await _helper.worofthedayth2eng();
+
       // var test = eng2th!.where((element) => element['eentry'] == "ant");
       // print(test);
       // th2eng!.forEach((element) {
@@ -37,7 +42,10 @@ class _FirstPageState extends State<FirstPage> {
               builder: (context) => WordOfDay_Screen(
                     eng2th: eng2th!,
                     th2eng: th2eng!,
-                    lang_mode: 0,
+                    lang_mode: 0, 
+                    wordofthedayeng2th: wordofthedayeng2th!,
+                    wordofthedayth2eng: wordofthedayth2eng! 
+                    ,
                   )),
           (route) => false);
     });
