@@ -14,10 +14,10 @@ class _Detail_MyVocab_ScreenState extends State<Detail_MyVocab_Screen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        shape: RoundedRectangleBorder(
+        shape:const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
-            bottomLeft: const Radius.circular(20.0),
-            bottomRight: const Radius.circular(20.0),
+            bottomLeft:  Radius.circular(20.0),
+            bottomRight:  Radius.circular(20.0),
           ),
         ),
         automaticallyImplyLeading: false,
@@ -29,7 +29,7 @@ class _Detail_MyVocab_ScreenState extends State<Detail_MyVocab_Screen> {
           style: TextStyle(fontSize: 15),
         ),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_new_outlined),
+          icon:const Icon(Icons.arrow_back_ios_new_outlined),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -41,8 +41,8 @@ class _Detail_MyVocab_ScreenState extends State<Detail_MyVocab_Screen> {
             children: [
               Container(
                 padding:
-                    EdgeInsets.only(bottom: 25, right: 20, left: 20, top: 8),
-                child: Text(
+                  const  EdgeInsets.only(bottom: 25, right: 20, left: 20, top: 8),
+                child:const Text(
                   'Crazy in love',
                   style: TextStyle(
                       fontFamily: 'DMDisplay',
@@ -67,7 +67,7 @@ class _Detail_MyVocab_ScreenState extends State<Detail_MyVocab_Screen> {
                 ),
                 child: ListTile(
                   leading: Text('${History[index]['name']}'),
-                  trailing: Icon(Icons.arrow_forward_ios_rounded),
+                  trailing:const Icon(Icons.arrow_forward_ios_rounded),
                 ),
               );
             }),

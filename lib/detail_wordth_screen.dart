@@ -12,10 +12,10 @@ class _Detail_wordTH_ScreenState extends State<Detail_wordTH_Screen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        shape:const RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
-            bottomLeft:  Radius.circular(20.0),
-            bottomRight:  Radius.circular(20.0),
+            bottomLeft: Radius.circular(20.0),
+            bottomRight: Radius.circular(20.0),
           ),
         ),
         automaticallyImplyLeading: false,
@@ -26,21 +26,22 @@ class _Detail_wordTH_ScreenState extends State<Detail_wordTH_Screen> {
           style: TextStyle(fontSize: 15),
         ),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_new_outlined),
+          icon: const Icon(Icons.arrow_back_ios_new_outlined),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
         bottom: PreferredSize(
-          preferredSize: Size.fromHeight(120.0),
+          preferredSize: const Size.fromHeight(120.0),
           child: Container(
-            padding: EdgeInsets.only(bottom: 25, right: 20, left: 20, top: 8),
+            padding:
+                const EdgeInsets.only(bottom: 25, right: 20, left: 20, top: 8),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+                  children: const [
                     Text(
                       'ตามกฎหมาย',
                       style: TextStyle(fontSize: 36, color: Colors.white),
@@ -58,7 +59,7 @@ class _Detail_wordTH_ScreenState extends State<Detail_wordTH_Screen> {
                 ),
                 IconButton(
                     onPressed: () {},
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.favorite_border_rounded,
                       size: 30,
                       color: Colors.white,
@@ -69,30 +70,31 @@ class _Detail_wordTH_ScreenState extends State<Detail_wordTH_Screen> {
         ),
       ),
       body: SingleChildScrollView(
+        physics:const BouncingScrollPhysics(),
         child: Padding(
           padding: const EdgeInsets.all(23.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              const Text(
                 'DEFINITION',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              Divider(),
+              const Divider(),
               Row(
                 children: [
                   Container(
-                    margin: EdgeInsets.only(top: 8),
-                    child: CircleAvatar(
+                    margin: const EdgeInsets.only(bottom: 21),
+                    child: const CircleAvatar(
                       radius: 5,
                       backgroundColor: Colors.grey,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 15,
                   ),
                   Column(
-                    children: [
+                    children: const [
                       Text(
                         'Aloha',
                         style: TextStyle(fontSize: 16),
@@ -108,48 +110,45 @@ class _Detail_wordTH_ScreenState extends State<Detail_wordTH_Screen> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 23,
               ),
-              Text(
+              const Text(
                 'EXAMPLE',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              Divider(),
+              const Divider(),
               Row(
                 children: [
                   Container(
-                    margin: EdgeInsets.only(top: 8),
-                    child: CircleAvatar(
+                    margin: const EdgeInsets.only(bottom: 21),
+                    child: const CircleAvatar(
                       radius: 5,
                       backgroundColor: Colors.grey,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 15,
                   ),
-                  Flexible(
+                  const Flexible(
                     child: Text(
                         'หนังสือลาออกของนายพรพจน์ยังไม่ทันมีผลตามกฎหมายเรื่องราวก็จบลงเสียก่อน'),
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 23,
               ),
-              Text(
+              const Text(
                 'SYNONYMS',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              Divider(),
+              const Divider(),
               Row(
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(top: 8),
-                    child: CircleAvatar(
-                      radius: 5,
-                      backgroundColor: Colors.grey,
-                    ),
+                children: const [
+                  CircleAvatar(
+                    radius: 5,
+                    backgroundColor: Colors.grey,
                   ),
                   SizedBox(
                     width: 15,
@@ -159,102 +158,98 @@ class _Detail_wordTH_ScreenState extends State<Detail_wordTH_Screen> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 23,
               ),
-              Text(
+              const Text(
                 'ANTONYMS',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              Divider(),
+              const Divider(),
               Row(
                 children: [
                   Container(
-                    margin: EdgeInsets.only(top: 8),
-                    child: CircleAvatar(
+                    child: const CircleAvatar(
                       radius: 5,
                       backgroundColor: Colors.grey,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 15,
                   ),
-                  Flexible(
+                  const Flexible(
                     child: Text('-'),
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 23,
               ),
-              Text(
+              const Text(
                 'TRANSLITERATE WORD',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              Divider(),
+              const Divider(),
               Row(
                 children: [
                   Container(
-                    margin: EdgeInsets.only(top: 8),
-                    child: CircleAvatar(
+                    child: const CircleAvatar(
                       radius: 5,
                       backgroundColor: Colors.grey,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 15,
                   ),
-                  Flexible(
+                  const Flexible(
                     child: Text('according to the law; legally	'),
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 23,
               ),
-              Text(
+              const Text(
                 'NOUN',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              Divider(),
+              const Divider(),
               Row(
                 children: [
                   Container(
-                    margin: EdgeInsets.only(top: 8),
-                    child: CircleAvatar(
+                    child: const CircleAvatar(
                       radius: 5,
                       backgroundColor: Colors.grey,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 15,
                   ),
-                  Flexible(
+                  const Flexible(
                     child: Text('-'),
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 23,
               ),
-              Text(
+              const Text(
                 'NOTE',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              Divider(),
+              const Divider(),
               Row(
                 children: [
                   Container(
-                    margin: EdgeInsets.only(top: 8),
-                    child: CircleAvatar(
+                    child: const CircleAvatar(
                       radius: 5,
                       backgroundColor: Colors.grey,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 15,
                   ),
-                  Flexible(
+                  const Flexible(
                     child: Text('-'),
                   ),
                 ],
