@@ -212,7 +212,10 @@ class _Search_eng_ScreenState extends State<Search_eng_Screen> {
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: ListTile(
-                            leading: Text('${items[index]['esearch']}'),
+                            title: Text(
+                              '${items[index]['esearch']}',
+                              style: TextStyle(fontSize: size.width * 0.028),
+                            ),
                             trailing:
                                 const Icon(Icons.arrow_forward_ios_rounded),
                           ),

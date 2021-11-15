@@ -196,7 +196,8 @@ class _Search_TH2Eng_ScreenState extends State<Search_TH2Eng_Screen> {
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: ListTile(
-                            leading: Text('${items[index]['tentry']}'),
+                            title: Text('${items[index]['tentry']}',
+                                style: TextStyle(fontSize: size.width * 0.028)),
                             trailing:
                                 const Icon(Icons.arrow_forward_ios_rounded),
                           ),
