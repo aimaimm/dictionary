@@ -12,10 +12,6 @@ class FirstPage extends StatefulWidget {
 }
 
 class _FirstPageState extends State<FirstPage> {
-  List? eng2th;
-  List? th2eng;
-  List? wordofthedayeng2th;
-  List? wordofthedayth2eng;
   final db_dic _helper = db_dic();
 
   @override
@@ -23,10 +19,10 @@ class _FirstPageState extends State<FirstPage> {
     _helper.openDB();
 
     Timer(const Duration(seconds: 1), () async {
-      eng2th = await _helper.getAllDataEng2th();
-      th2eng = await _helper.getAllDatath2Eng();
-      wordofthedayeng2th = await _helper.wordofthedayeng2th();
-      wordofthedayth2eng = await _helper.worofthedayth2eng();
+      List raweng2th = await _helper.getAllDataEng2th();
+      List rawth2eng = await _helper.getAllDatath2Eng();
+      List wordofthedayeng2th = await _helper.wordofthedayeng2th();
+      List wordofthedayth2eng = await _helper.worofthedayth2eng();
 
       // var test = eng2th!.where((element) => element['eentry'] == "ant");
       // print(test);
@@ -36,16 +32,19 @@ class _FirstPageState extends State<FirstPage> {
       //   }
       // });
       // _helper.closeDB();
+      // eng2th![0].insert({'table': 'eng'});
+      List eng2th = raweng2th.toList();
+      List th2eng = rawth2eng.toList();
+
       Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(
               builder: (context) => WordOfDay_Screen(
-                    eng2th: eng2th!,
-                    th2eng: th2eng!,
-                    lang_mode: 0, 
-                    wordofthedayeng2th: wordofthedayeng2th!,
-                    wordofthedayth2eng: wordofthedayth2eng! 
-                    ,
+                    eng2th: eng2th,
+                    th2eng: th2eng,
+                    lang_mode: 0,
+                    wordofthedayeng2th: wordofthedayeng2th,
+                    wordofthedayth2eng: wordofthedayth2eng,
                   )),
           (route) => false);
     });

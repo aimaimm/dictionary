@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Detail_wordTH_Screen extends StatefulWidget {
-  const Detail_wordTH_Screen({Key? key, required this.wordth})
+  const Detail_wordTH_Screen(
+      {Key? key,
+      required this.wordth,
+      required this.json,
+      required this.checkstate})
       : super(key: key);
 
   final wordth;
+  final String json;
+  final bool checkstate;
 
   @override
   _Detail_wordTH_ScreenState createState() => _Detail_wordTH_ScreenState();
@@ -78,6 +85,19 @@ class _Detail_wordTH_ScreenState extends State<Detail_wordTH_Screen> {
       } else {
         return widget.wordth['notes'];
       }
+    }
+  }
+
+  @override
+  void initState() {
+    saveword();
+    super.initState();
+  }
+
+  Future<void> saveword() async {
+    if (widget.checkstate == true) {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setString('k_word', widget.json);
     }
   }
 

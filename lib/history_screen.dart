@@ -1,27 +1,103 @@
+import 'dart:convert';
+
 import 'package:dictionary/data.dart';
+import 'package:dictionary/detail_wordeng_screen.dart';
+import 'package:dictionary/detail_wordth_screen.dart';
 import 'package:dictionary/sidebar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class History_Screen extends StatefulWidget {
-  const History_Screen({Key? key}) : super(key: key);
+  const History_Screen(
+      {Key? key,
+      required this.eng2th,
+      required this.th2eng,
+      required this.wordofthedayeng2th,
+      required this.wordofthedayth2eng})
+      : super(key: key);
+
+  final List eng2th;
+  final List th2eng;
+  final List wordofthedayeng2th;
+  final List wordofthedayth2eng;
 
   @override
   _History_ScreenState createState() => _History_ScreenState();
 }
 
 class _History_ScreenState extends State<History_Screen> {
-
-  String? engword;
+  String? word;
+  bool loadWord = true;
+  var items;
 
   @override
-    void historyword() async {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      engword = prefs.getString('k_wordeng');
-      print(engword);
+  void historyword() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    word = prefs.getString('k_word');
+    if (word == null) {
+    } else {
+      items = jsonDecode(word!);
+      if (items is List) {
+        items = List.from(items.reversed);
+      } else {
+        List dummydata = [];
+        dummydata.add(items);
+        items = dummydata;
+      }
+      setState(() {
+        loadWord = false;
+      });
     }
 
+    // print(items.runtimeType);
+  }
+
+  @override
+  void initState() {
+    historyword();
+    super.initState();
+  }
+
+  Widget texthistory(item) {
+    print(item);
+    var keys = [
+      'a',
+      'b',
+      'c',
+      'd',
+      'e',
+      'f',
+      'g',
+      'h',
+      'i',
+      'j',
+      'k',
+      'l',
+      'm',
+      'n',
+      'o',
+      'p',
+      'q',
+      'r',
+      's',
+      't',
+      'u',
+      'v',
+      'w',
+      'x',
+      'y',
+      'z',
+    ];
+    var check_lang =
+        RegExp("(?:^|\\s)(?:${keys.join('|')})(?!\\S)", caseSensitive: false);
+
+    if (check_lang.hasMatch(item['eentry'])) {
+      return Text('${item['eentry']}');
+    } else {
+      return Text('${item['tentry']}');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +144,12 @@ class _History_ScreenState extends State<History_Screen> {
           ),
         ),
       ),
-      drawer: SideDrawer(),
+      drawer: SideDrawer(
+        eng2th: widget.eng2th,
+        th2eng: widget.th2eng,
+        wordofthedayeng2th: widget.wordofthedayeng2th,
+        wordofthedayth2eng: widget.wordofthedayth2eng,
+      ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: ListView(
@@ -110,24 +191,84 @@ class _History_ScreenState extends State<History_Screen> {
             const SizedBox(
               height: 10,
             ),
-            ListView.builder(
-                primary: false,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: 1,
-                itemBuilder: (context, index) {
-                  return Card(
-                    elevation: 0,
-                    color: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: ListTile(
-                      leading: Text('$engword'),
-                      trailing: const Icon(Icons.arrow_forward_ios_rounded),
-                    ),
-                  );
-                })
+            loadWord
+                ? Container()
+                : ListView.builder(
+                    primary: false,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: items.length,
+                    itemBuilder: (context, index) {
+                      return InkWell(
+                        onTap: () {
+                          var keys = [
+                            'a',
+                            'b',
+                            'c',
+                            'd',
+                            'e',
+                            'f',
+                            'g',
+                            'h',
+                            'i',
+                            'j',
+                            'k',
+                            'l',
+                            'm',
+                            'n',
+                            'o',
+                            'p',
+                            'q',
+                            'r',
+                            's',
+                            't',
+                            'u',
+                            'v',
+                            'w',
+                            'x',
+                            'y',
+                            'z',
+                          ];
+                          var check_lang = RegExp(
+                              "(?:^|\\s)(?:${keys.join('|')})(?!\\S)",
+                              caseSensitive: false);
+
+                          if (check_lang.hasMatch(items[index]['eentry'])) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Detail_WordEng_Screen(
+                                  wordeng: items[index],
+                                ),
+                              ),
+                            );
+                          } else {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Detail_wordTH_Screen(
+                                  checkstate: false,
+                                  json: '',
+                                  wordth: items[index],
+                                ),
+                              ),
+                            );
+                          }
+                        },
+                        child: Card(
+                          elevation: 0,
+                          color: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: ListTile(
+                            leading: texthistory(items[index]),
+                            trailing:
+                                const Icon(Icons.arrow_forward_ios_rounded),
+                          ),
+                        ),
+                      );
+                    })
           ],
         ),
       ),

@@ -12,11 +12,17 @@ import 'package:sqflite/sqlite_api.dart';
 
 class Search_eng_Screen extends StatefulWidget {
   const Search_eng_Screen(
-      {Key? key, required this.eng2th, required this.th2eng})
+      {Key? key,
+      required this.eng2th,
+      required this.th2eng,
+      required this.wordofthedayeng2th,
+      required this.wordofthedayth2eng})
       : super(key: key);
 
   final List eng2th;
   final List th2eng;
+  final List wordofthedayeng2th;
+  final List wordofthedayth2eng;
 
   @override
   _Search_eng_ScreenState createState() => _Search_eng_ScreenState();
@@ -29,7 +35,7 @@ class _Search_eng_ScreenState extends State<Search_eng_Screen> {
   void historyword(item) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    String? wordall = prefs.getString('k_wordeng');
+    String? wordall = prefs.getString('k_word');
     // String json = jsonEncode(item);
     // List? history = jsonDecode(json);
 
@@ -37,7 +43,7 @@ class _Search_eng_ScreenState extends State<Search_eng_Screen> {
 
     if (wordall == null) {
       String json = jsonEncode(item);
-      prefs.setString('k_wordeng', json);
+      prefs.setString('k_word', json);
       // print(jsonDecode(prefs.getString('k_word').toString()).runtimeType);
 
     } else {
@@ -49,14 +55,14 @@ class _Search_eng_ScreenState extends State<Search_eng_Screen> {
         history.add(item);
 
         String json = jsonEncode(history);
-        prefs.setString('k_wordeng', json);
+        prefs.setString('k_word', json);
       } else if (word is List) {
         history.clear();
         history = word;
         history.add(item);
 
         String json = jsonEncode(history);
-        prefs.setString('k_wordeng', json);
+        prefs.setString('k_word', json);
       }
 
       print(history);
@@ -68,7 +74,6 @@ class _Search_eng_ScreenState extends State<Search_eng_Screen> {
     prefs.clear();
   }
 
-  db_dic helper = db_dic();
   @override
   void initState() {
     items.addAll(widget.eng2th);
@@ -132,6 +137,8 @@ class _Search_eng_ScreenState extends State<Search_eng_Screen> {
                     builder: (context) => Search_TH2Eng_Screen(
                       th2eng: widget.th2eng,
                       eng2th: widget.eng2th,
+                      wordofthedayeng2th: widget.wordofthedayeng2th,
+                      wordofthedayth2eng: widget.wordofthedayth2eng,
                     ),
                   ),
                 );
@@ -156,7 +163,12 @@ class _Search_eng_ScreenState extends State<Search_eng_Screen> {
           ),
         ],
       ),
-      drawer: SideDrawer(),
+      drawer: SideDrawer(
+        eng2th: widget.eng2th,
+        th2eng: widget.th2eng,
+        wordofthedayeng2th: widget.wordofthedayeng2th,
+        wordofthedayth2eng: widget.wordofthedayth2eng,
+      ),
       body: Column(
         children: [
           Container(

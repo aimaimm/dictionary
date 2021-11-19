@@ -6,7 +6,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class MyVocab_Screen extends StatefulWidget {
-  const MyVocab_Screen({Key? key}) : super(key: key);
+  const MyVocab_Screen(
+      {Key? key,
+      required this.eng2th,
+      required this.th2eng,
+      required this.wordofthedayeng2th,
+      required this.wordofthedayth2eng})
+      : super(key: key);
+
+  final List eng2th;
+  final List th2eng;
+  final List wordofthedayeng2th;
+  final List wordofthedayth2eng;
 
   @override
   _MyVocab_ScreenState createState() => _MyVocab_ScreenState();
@@ -118,7 +129,12 @@ class _MyVocab_ScreenState extends State<MyVocab_Screen> {
           ),
         ),
       ),
-      drawer: SideDrawer(),
+      drawer: SideDrawer(
+        eng2th: widget.eng2th,
+        th2eng: widget.th2eng,
+        wordofthedayeng2th: widget.wordofthedayeng2th,
+        wordofthedayth2eng: widget.wordofthedayth2eng,
+      ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: ListView.builder(

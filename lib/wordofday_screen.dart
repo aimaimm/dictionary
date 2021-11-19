@@ -25,8 +25,13 @@ class WordOfDay_Screen extends StatefulWidget {
   _WordOfDay_ScreenState createState() => _WordOfDay_ScreenState();
 }
 
-
 class _WordOfDay_ScreenState extends State<WordOfDay_Screen> {
+  // @override
+  // void initState() {
+  //   print(widget.eng2th.runtimeType);
+  //   print(widget.th2eng.runtimeType);
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +56,12 @@ class _WordOfDay_ScreenState extends State<WordOfDay_Screen> {
           ),
         ),
       ),
-      drawer: SideDrawer(),
+      drawer: SideDrawer(
+        eng2th: widget.eng2th,
+        th2eng: widget.th2eng,
+        wordofthedayeng2th: widget.wordofthedayeng2th,
+        wordofthedayth2eng: widget.wordofthedayth2eng,
+      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -72,6 +82,8 @@ class _WordOfDay_ScreenState extends State<WordOfDay_Screen> {
                       builder: (context) => Search_TH2Eng_Screen(
                         th2eng: widget.th2eng,
                         eng2th: widget.eng2th,
+                        wordofthedayeng2th: widget.wordofthedayeng2th,
+                        wordofthedayth2eng: widget.wordofthedayth2eng,
                       ),
                     ),
                   );
@@ -82,6 +94,8 @@ class _WordOfDay_ScreenState extends State<WordOfDay_Screen> {
                       builder: (context) => Search_eng_Screen(
                         th2eng: widget.th2eng,
                         eng2th: widget.eng2th,
+                        wordofthedayeng2th: widget.wordofthedayeng2th,
+                        wordofthedayth2eng: widget.wordofthedayth2eng,
                       ),
                     ),
                   );
@@ -124,10 +138,10 @@ class _WordOfDay_ScreenState extends State<WordOfDay_Screen> {
                           padding: const EdgeInsets.all(10.0),
                           child: Text(
                             '${widget.wordofthedayeng2th[0]['esearch']}',
-                            style:  TextStyle(
+                            style: TextStyle(
                                 fontFamily: 'DMDisplay',
                                 color: Colors.black,
-                                fontSize: size.width/19,
+                                fontSize: size.width / 19,
                                 fontWeight: FontWeight.w600),
                           ),
                         ),
@@ -146,16 +160,16 @@ class _WordOfDay_ScreenState extends State<WordOfDay_Screen> {
                           color: Colors.blue.shade800,
                         ),
                       ),
-                       Padding(
-                         padding: const EdgeInsets.all(12.0),
-                         child: Text(
+                      Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Text(
                           '${widget.wordofthedayeng2th[0]['tentry']}',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: size.width / 30,
                           ),
-                                             ),
-                       ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -185,7 +199,7 @@ class _WordOfDay_ScreenState extends State<WordOfDay_Screen> {
                             style: TextStyle(
                                 fontFamily: 'DMDisplay',
                                 color: Colors.black,
-                                fontSize: size.width/24,
+                                fontSize: size.width / 24,
                                 fontWeight: FontWeight.w600),
                           ),
                         ),
@@ -203,16 +217,16 @@ class _WordOfDay_ScreenState extends State<WordOfDay_Screen> {
                           color: Colors.blue.shade800,
                         ),
                       ),
-                       Padding(
-                         padding: const EdgeInsets.all(12.0),
-                         child: Text(
+                      Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Text(
                           '${widget.wordofthedayth2eng[0]['eentry']}',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: size.width / 30,
                           ),
+                        ),
                       ),
-                       ),
                     ],
                   ),
                 ),

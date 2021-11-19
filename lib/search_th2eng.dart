@@ -9,12 +9,18 @@ import 'package:flutter_svg/svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Search_TH2Eng_Screen extends StatefulWidget {
-  const Search_TH2Eng_Screen(
-      {Key? key, required this.th2eng, required this.eng2th})
-      : super(key: key);
+  const Search_TH2Eng_Screen({
+    Key? key,
+    required this.th2eng,
+    required this.eng2th,
+    required this.wordofthedayeng2th,
+    required this.wordofthedayth2eng,
+  }) : super(key: key);
 
   final List th2eng;
   final List eng2th;
+  final List wordofthedayeng2th;
+  final List wordofthedayth2eng;
 
   @override
   _Search_TH2Eng_ScreenState createState() => _Search_TH2Eng_ScreenState();
@@ -25,16 +31,25 @@ class _Search_TH2Eng_ScreenState extends State<Search_TH2Eng_Screen> {
 
   List history = [];
 
-  void historywordth(item) async {
-    SharedPreferences prefsth = await SharedPreferences.getInstance();
+  void historywordth(item, context) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    String? wordall = prefsth.getString('k_wordth');
+    String? wordall = prefs.getString('k_word');
 
     if (wordall == null) {
       String json = jsonEncode(item);
-      prefsth.setString('k_wordth', json);
+      prefs.setString('k_word', json);
       // print(jsonDecode(prefs.getString('k_word').toString()).runtimeType);
-
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => Detail_wordTH_Screen(
+            wordth: item,
+            checkstate: false,
+            json: "",
+          ),
+        ),
+      );
     } else {
       var word = jsonDecode(wordall);
       // var test = word.runtimeType;
@@ -44,18 +59,40 @@ class _Search_TH2Eng_ScreenState extends State<Search_TH2Eng_Screen> {
         history.add(item);
 
         String json = jsonEncode(history);
-        prefsth.setString('k_wordth', json);
+        prefs.setString('k_word', json);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Detail_wordTH_Screen(
+              wordth: item,
+              checkstate: false,
+              json: "",
+            ),
+          ),
+        );
       } else if (word is List) {
         history.clear();
         history = word;
         history.add(item);
 
         String json = jsonEncode(history);
-        prefsth.setString('k_wordth', json);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Detail_wordTH_Screen(
+              wordth: item,
+              checkstate: true,
+              json: json,
+            ),
+          ),
+        );
       }
-
-      print(history);
     }
+  }
+
+  Future<void> clear() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.clear();
   }
 
   @override
@@ -132,6 +169,8 @@ class _Search_TH2Eng_ScreenState extends State<Search_TH2Eng_Screen> {
                       builder: (context) => Search_eng_Screen(
                         th2eng: widget.th2eng,
                         eng2th: widget.eng2th,
+                        wordofthedayeng2th: widget.wordofthedayeng2th,
+                        wordofthedayth2eng: widget.wordofthedayth2eng,
                       ),
                     ));
               },
@@ -144,7 +183,12 @@ class _Search_TH2Eng_ScreenState extends State<Search_TH2Eng_Screen> {
           ),
         ],
       ),
-      drawer: SideDrawer(),
+      drawer: SideDrawer(
+        eng2th: widget.eng2th,
+        th2eng: widget.th2eng,
+        wordofthedayeng2th: widget.wordofthedayeng2th,
+        wordofthedayth2eng: widget.wordofthedayth2eng,
+      ),
       body: Column(
         children: [
           Container(
@@ -152,12 +196,15 @@ class _Search_TH2Eng_ScreenState extends State<Search_TH2Eng_Screen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'Dictionary',
-                  style: TextStyle(
-                      fontFamily: 'DMDisplay',
-                      color: Colors.white,
-                      fontSize: 36),
+                TextButton(
+                  onPressed: clear,
+                  child: const Text(
+                    'Dictionary',
+                    style: TextStyle(
+                        fontFamily: 'DMDisplay',
+                        color: Colors.white,
+                        fontSize: 36),
+                  ),
                 ),
                 const SizedBox(
                   height: 15,
@@ -211,20 +258,21 @@ class _Search_TH2Eng_ScreenState extends State<Search_TH2Eng_Screen> {
                     itemBuilder: (context, index) {
                       return InkWell(
                         onTap: () {
-                          historywordth(items);
-                          
+                          historywordth(items[index], context);
+
                           // var test = items[index];
                           // print(index);
                           // print(items[index].runtimeType);
                           // print(items[index]);
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => Detail_wordTH_Screen(
-                                wordth: items[index],
-                              ),
-                            ),
-                          );
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) => Detail_wordTH_Screen(
+                          //       wordth: items[index],
+                          //       json: "",
+                          //     ),
+                          //   ),
+                          // );
                         },
                         child: Card(
                           elevation: 0,
