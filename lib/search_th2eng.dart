@@ -33,7 +33,7 @@ class _Search_TH2Eng_ScreenState extends State<Search_TH2Eng_Screen> {
 
   void historywordth(item, context) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-
+    item['count']++;
     String? wordall = prefs.getString('k_word');
 
     if (wordall == null) {
@@ -55,26 +55,57 @@ class _Search_TH2Eng_ScreenState extends State<Search_TH2Eng_Screen> {
       // var test = word.runtimeType;
       print(word.runtimeType);
       if (word is Map<String, dynamic>) {
-        history.add(word);
-        history.add(item);
-
-        String json = jsonEncode(history);
-        prefs.setString('k_word', json);
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => Detail_wordTH_Screen(
-              wordth: item,
-              checkstate: false,
-              json: "",
+        if (word['id'] == item['id']) {
+          word['count']++;
+          history.add(word);
+          String json = jsonEncode(history);
+          prefs.setString('k_word', json);
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => Detail_wordTH_Screen(
+                wordth: item,
+                checkstate: false,
+                json: "",
+              ),
             ),
-          ),
-        );
-      } else if (word is List) {
-        history.clear();
-        history = word;
-        history.add(item);
+          );
+        } else {
+          history.add(word);
+          history.add(item);
 
+          String json = jsonEncode(history);
+          prefs.setString('k_word', json);
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => Detail_wordTH_Screen(
+                wordth: item,
+                checkstate: false,
+                json: "",
+              ),
+            ),
+          );
+        }
+      } else if (word is List) {
+        bool addNew = true;
+        for (int i = 0; i < word.length; i++) {
+          if (word[i]['id'] == item['id']) {
+            word[i]['count']++;
+            history.clear();
+            history = word;
+            String json = jsonEncode(history);
+            prefs.setString('k_word', json);
+            addNew = false;
+            break;
+          }
+        }
+
+        if (addNew == true) {
+          history.clear();
+          history = word;
+          history.add(item);
+        }
         String json = jsonEncode(history);
         Navigator.push(
           context,

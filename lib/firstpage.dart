@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:dictionary/db_dic.dart';
 import 'package:dictionary/wordofday_screen.dart';
@@ -33,8 +34,33 @@ class _FirstPageState extends State<FirstPage> {
       // });
       // _helper.closeDB();
       // eng2th![0].insert({'table': 'eng'});
-      List eng2th = raweng2th.toList();
-      List th2eng = rawth2eng.toList();
+      // List eng2th = raweng2th.toList();
+      // List th2eng = rawth2eng.toList();
+
+      // eng2th.forEach((element) {
+      //   element.add({''});
+      // });
+      // eng2th[0].add({'counting': 0});
+      List eng2th = [];
+      List th2eng = [];
+      for (int i = 0; i < raweng2th.length; i++) {
+        Map dummydata = Map.from(raweng2th[i]);
+        dummydata.addAll({'count': 0});
+        eng2th.add(dummydata);
+        // String test = jsonEncode(eng2th);
+        // List test1 = jsonDecode(test);
+
+        // eng2th[i].add({'count': 0});
+      }
+      for (int i = 0; i < rawth2eng.length; i++) {
+        Map dummydata = Map.from(rawth2eng[i]);
+        dummydata.addAll({'count': 0});
+        th2eng.add(dummydata);
+
+        // th2eng[i].add({'count': 0});
+      }
+      // String test = jsonEncode(eng2th[0]);
+      // Map test1 = jsonDecode(test);
 
       Navigator.pushAndRemoveUntil(
           context,

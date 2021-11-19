@@ -51,18 +51,39 @@ class _Search_eng_ScreenState extends State<Search_eng_Screen> {
       // var test = word.runtimeType;
       print(word.runtimeType);
       if (word is Map<String, dynamic>) {
-        history.add(word);
-        history.add(item);
+        if (word['id'] == item['id']) {
+          word['count']++;
+          history.add(word);
+          String json = jsonEncode(history);
+          prefs.setString('k_word', json);
+        } else {
+          history.add(word);
+          history.add(item);
 
-        String json = jsonEncode(history);
-        prefs.setString('k_word', json);
+          String json = jsonEncode(history);
+          prefs.setString('k_word', json);
+        }
       } else if (word is List) {
-        history.clear();
-        history = word;
-        history.add(item);
+        bool addNew = true;
+        for (int i = 0; i < word.length; i++) {
+          if (word[i]['id'] == item['id']) {
+            word[i]['count']++;
+            history.clear();
+            history = word;
+            String json = jsonEncode(history);
+            prefs.setString('k_word', json);
+            addNew = false;
+            break;
+          }
+        }
+        if (addNew == true) {
+          history.clear();
+          history = word;
+          history.add(item);
 
-        String json = jsonEncode(history);
-        prefs.setString('k_word', json);
+          String json = jsonEncode(history);
+          prefs.setString('k_word', json);
+        }
       }
 
       print(history);

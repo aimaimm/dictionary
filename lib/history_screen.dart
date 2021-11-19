@@ -30,6 +30,65 @@ class _History_ScreenState extends State<History_Screen> {
   String? word;
   bool loadWord = true;
   var items;
+  List mostword = [];
+  var keys = [
+    'a',
+    'b',
+    'c',
+    'd',
+    'e',
+    'f',
+    'g',
+    'h',
+    'i',
+    'j',
+    'k',
+    'l',
+    'm',
+    'n',
+    'o',
+    'p',
+    'q',
+    'r',
+    's',
+    't',
+    'u',
+    'v',
+    'w',
+    'x',
+    'y',
+    'z',
+  ];
+  var check_lang;
+
+  void mostSearch() {
+    for (int i = 0; i < items.length; i++) {
+      mostword.add(items[i]);
+    }
+    mostword.sort((a, b) => b['count'].compareTo(a['count']));
+    for (int i = 0; i < mostword.length; i++) {
+      print(mostword[i]);
+    }
+  }
+
+  int generatemostSearch() {
+    if (mostword.length >= 5) {
+      return 5;
+    } else {
+      return mostword.length;
+    }
+  }
+
+  Widget textMost(item) {
+    check_lang =
+        RegExp("(?:^|\\s)(?:${keys.join('|')})(?!\\S)", caseSensitive: false);
+
+    if (check_lang.hasMatch(item['eentry'])) {
+      return Text('${item['eentry']}');
+    } else {
+      return Text('${item['tentry']}');
+    }
+  }
 
   @override
   void historyword() async {
@@ -45,6 +104,7 @@ class _History_ScreenState extends State<History_Screen> {
         dummydata.add(items);
         items = dummydata;
       }
+      mostSearch();
       setState(() {
         loadWord = false;
       });
@@ -60,36 +120,7 @@ class _History_ScreenState extends State<History_Screen> {
   }
 
   Widget texthistory(item) {
-    print(item);
-    var keys = [
-      'a',
-      'b',
-      'c',
-      'd',
-      'e',
-      'f',
-      'g',
-      'h',
-      'i',
-      'j',
-      'k',
-      'l',
-      'm',
-      'n',
-      'o',
-      'p',
-      'q',
-      'r',
-      's',
-      't',
-      'u',
-      'v',
-      'w',
-      'x',
-      'y',
-      'z',
-    ];
-    var check_lang =
+    check_lang =
         RegExp("(?:^|\\s)(?:${keys.join('|')})(?!\\S)", caseSensitive: false);
 
     if (check_lang.hasMatch(item['eentry'])) {
@@ -163,24 +194,28 @@ class _History_ScreenState extends State<History_Screen> {
             const SizedBox(
               height: 10,
             ),
-            ListView.builder(
-                primary: false,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: most.length,
-                itemBuilder: (context, index) {
-                  return Card(
-                    elevation: 0,
-                    color: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: ListTile(
-                      leading: Text('${most[index]['name']}'),
-                      trailing: const Icon(Icons.arrow_forward_ios_rounded),
-                    ),
-                  );
-                }),
+            loadWord
+                ? const SizedBox(
+                    height: 15,
+                  )
+                : ListView.builder(
+                    primary: false,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: generatemostSearch(),
+                    itemBuilder: (context, index) {
+                      return Card(
+                        elevation: 0,
+                        color: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: ListTile(
+                          leading: textMost(mostword[index]),
+                          trailing: const Icon(Icons.arrow_forward_ios_rounded),
+                        ),
+                      );
+                    }),
             const SizedBox(
               height: 10,
             ),
@@ -201,35 +236,7 @@ class _History_ScreenState extends State<History_Screen> {
                     itemBuilder: (context, index) {
                       return InkWell(
                         onTap: () {
-                          var keys = [
-                            'a',
-                            'b',
-                            'c',
-                            'd',
-                            'e',
-                            'f',
-                            'g',
-                            'h',
-                            'i',
-                            'j',
-                            'k',
-                            'l',
-                            'm',
-                            'n',
-                            'o',
-                            'p',
-                            'q',
-                            'r',
-                            's',
-                            't',
-                            'u',
-                            'v',
-                            'w',
-                            'x',
-                            'y',
-                            'z',
-                          ];
-                          var check_lang = RegExp(
+                          check_lang = RegExp(
                               "(?:^|\\s)(?:${keys.join('|')})(?!\\S)",
                               caseSensitive: false);
 
