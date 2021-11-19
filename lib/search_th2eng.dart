@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dictionary/data.dart';
+import 'package:dictionary/detail_wordth_screen.dart';
 import 'package:dictionary/search_eng2th_screen.dart';
 import 'package:dictionary/sidebar_widget.dart';
 import 'package:flutter/material.dart';
@@ -211,6 +212,19 @@ class _Search_TH2Eng_ScreenState extends State<Search_TH2Eng_Screen> {
                       return InkWell(
                         onTap: () {
                           historywordth(items);
+                          
+                          // var test = items[index];
+                          // print(index);
+                          // print(items[index].runtimeType);
+                          // print(items[index]);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Detail_wordTH_Screen(
+                                wordth: items[index],
+                              ),
+                            ),
+                          );
                         },
                         child: Card(
                           elevation: 0,

@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:dictionary/db_dic.dart';
+import 'package:dictionary/detail_wordeng_screen.dart';
 import 'package:dictionary/search_th2eng.dart';
 import 'package:dictionary/sidebar_widget.dart';
 import 'package:flutter/material.dart';
@@ -243,6 +244,14 @@ class _Search_eng_ScreenState extends State<Search_eng_Screen> {
                       return InkWell(
                         onTap: () {
                           historyword(items[index]);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Detail_WordEng_Screen(
+                                wordeng: items[index],
+                              ),
+                            ),
+                          );
                         },
                         child: Card(
                           elevation: 0,
