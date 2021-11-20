@@ -37,19 +37,12 @@ class _Search_eng_ScreenState extends State<Search_eng_Screen> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     String? wordall = prefs.getString('k_word');
-    // String json = jsonEncode(item);
-    // List? history = jsonDecode(json);
-
-    // Map? history = jsonDecode(wordall.toString());
 
     if (wordall == null) {
       String json = jsonEncode(item);
       prefs.setString('k_word', json);
-      // print(jsonDecode(prefs.getString('k_word').toString()).runtimeType);
-
     } else {
       var word = jsonDecode(wordall);
-      // var test = word.runtimeType;
       print(word.runtimeType);
       if (word is Map<String, dynamic>) {
         if (word['id'] == item['id']) {
@@ -164,17 +157,6 @@ class _Search_eng_ScreenState extends State<Search_eng_Screen> {
                         wordofthedayth2eng: widget.wordofthedayth2eng,
                       ),
                     ));
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(
-                //     builder: (context) => Search_TH2Eng_Screen(
-                //       th2eng: widget.th2eng,
-                //       eng2th: widget.eng2th,
-                //       wordofthedayeng2th: widget.wordofthedayeng2th,
-                //       wordofthedayth2eng: widget.wordofthedayth2eng,
-                //     ),
-                //   ),
-                // );
               },
               child: Text(
                 'TH-ENG',
@@ -230,25 +212,8 @@ class _Search_eng_ScreenState extends State<Search_eng_Screen> {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.06,
                   child: TextField(
-                    // onEditingComplete: () {
-                    //   print('object');
-                    // },
                     onChanged: (value) {
-                      // print(value);
-                      // final db_dic _helper = db_dic();
-                      // _helper.openDB();
                       filterSearchResults(value);
-                      // _helper.test(value);
-                      // Timer(Duration(seconds: 1), () async {
-                      //   List res = await _helper.test(value);
-                      //   // setState((){
-                      //   //   print('object');
-                      //   widget.eng2th.clear();
-                      //   // print(widget.eng2th.length);
-                      //   widget.eng2th.addAll(res);
-                      //   // });
-                      //   print(res);
-                      // });
                     },
                     decoration: InputDecoration(
                       hintText: 'Search word',

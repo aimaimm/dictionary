@@ -25,22 +25,6 @@ class _FirstPageState extends State<FirstPage> {
       List wordofthedayeng2th = await _helper.wordofthedayeng2th();
       List wordofthedayth2eng = await _helper.worofthedayth2eng();
 
-      // var test = eng2th!.where((element) => element['eentry'] == "ant");
-      // print(test);
-      // th2eng!.forEach((element) {
-      //   if (element['tentry'] == "ตาม") {
-      //     print("test");
-      //   }
-      // });
-      // _helper.closeDB();
-      // eng2th![0].insert({'table': 'eng'});
-      // List eng2th = raweng2th.toList();
-      // List th2eng = rawth2eng.toList();
-
-      // eng2th.forEach((element) {
-      //   element.add({''});
-      // });
-      // eng2th[0].add({'counting': 0});
       List eng2th = [];
       List th2eng = [];
       for (int i = 0; i < raweng2th.length; i++) {
@@ -48,10 +32,6 @@ class _FirstPageState extends State<FirstPage> {
         dummydata.addAll({'count': 0});
         dummydata.addAll({'fav': false});
         eng2th.add(dummydata);
-        // String test = jsonEncode(eng2th);
-        // List test1 = jsonDecode(test);
-
-        // eng2th[i].add({'count': 0});
       }
       for (int i = 0; i < rawth2eng.length; i++) {
         Map dummydata = Map.from(rawth2eng[i]);
@@ -59,10 +39,7 @@ class _FirstPageState extends State<FirstPage> {
         dummydata.addAll({'fav': false});
         th2eng.add(dummydata);
 
-        // th2eng[i].add({'count': 0});
       }
-      // String test = jsonEncode(eng2th[0]);
-      // Map test1 = jsonDecode(test);
 
       Navigator.pushAndRemoveUntil(
           context,
@@ -116,9 +93,6 @@ class _FirstPageState extends State<FirstPage> {
                 ],
               ),
             ),
-            // SizedBox(
-            //   height: MediaQuery.of(context).size.height * 0.8,
-            // ),
             Divider(
               color: const Color(0XFF707070).withOpacity(0.8),
               height: 23,

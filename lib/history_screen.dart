@@ -109,8 +109,6 @@ class _History_ScreenState extends State<History_Screen> {
         loadWord = false;
       });
     }
-
-    // print(items.runtimeType);
   }
 
   @override
@@ -184,7 +182,6 @@ class _History_ScreenState extends State<History_Screen> {
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: ListView(
-          //physics: ScrollPhysics(),
           physics: const BouncingScrollPhysics(),
           children: [
             const Text(

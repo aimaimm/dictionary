@@ -211,8 +211,6 @@ class _Detail_wordTH_ScreenState extends State<Detail_wordTH_Screen> {
         isChecked = List.filled(favdata.length, false);
         for (int i = 0; i < favdata.length; i++) {
           for (int n = 0; n < favdata[i]['groupword'].length; n++) {
-            // print(widget.wordeng['id']);
-            // print(favdata[i]['groupword'][n]);
             if (widget.wordth['id'] == favdata[i]['groupword'][n]['id'] &&
                 widget.wordth['tentry'] ==
                     favdata[i]['groupword'][n]['tentry']) {
@@ -288,7 +286,6 @@ class _Detail_wordTH_ScreenState extends State<Detail_wordTH_Screen> {
                 changeheart
                     ? IconButton(
                         onPressed: () {
-                          // Favorite_sheet(context);
                         },
                         icon: const Icon(
                           Icons.favorite,

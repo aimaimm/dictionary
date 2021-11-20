@@ -26,13 +26,6 @@ class WordOfDay_Screen extends StatefulWidget {
 }
 
 class _WordOfDay_ScreenState extends State<WordOfDay_Screen> {
-  // @override
-  // void initState() {
-  //   print(widget.eng2th.runtimeType);
-  //   print(widget.th2eng.runtimeType);
-  //   super.initState();
-  // }
-
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;

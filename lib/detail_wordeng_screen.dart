@@ -177,8 +177,6 @@ class _Detail_WordEng_ScreenState extends State<Detail_WordEng_Screen> {
         isChecked = List.filled(favdata.length, false);
         for (int i = 0; i < favdata.length; i++) {
           for (int n = 0; n < favdata[i]['groupword'].length; n++) {
-            // print(widget.wordeng['id']);
-            // print(favdata[i]['groupword'][n]);
             if (widget.wordeng['id'] == favdata[i]['groupword'][n]['id'] &&
                 widget.wordeng['eentry'] == favdata[i]['groupword'][n]['eentry']) {
               changeheart = true;
@@ -254,7 +252,6 @@ class _Detail_WordEng_ScreenState extends State<Detail_WordEng_Screen> {
                 changeheart
                     ? IconButton(
                         onPressed: () {
-                          // Favorite_sheet(context);
                         },
                         icon: const Icon(
                           Icons.favorite,

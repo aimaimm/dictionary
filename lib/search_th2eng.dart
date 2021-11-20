@@ -39,7 +39,6 @@ class _Search_TH2Eng_ScreenState extends State<Search_TH2Eng_Screen> {
     if (wordall == null) {
       String json = jsonEncode(item);
       prefs.setString('k_word', json);
-      // print(jsonDecode(prefs.getString('k_word').toString()).runtimeType);
       Navigator.push(
         context,
         MaterialPageRoute(
@@ -52,7 +51,6 @@ class _Search_TH2Eng_ScreenState extends State<Search_TH2Eng_Screen> {
       );
     } else {
       var word = jsonDecode(wordall);
-      // var test = word.runtimeType;
       print(word.runtimeType);
       if (word is Map<String, dynamic>) {
         if (word['id'] == item['id']) {
@@ -206,16 +204,6 @@ class _Search_TH2Eng_ScreenState extends State<Search_TH2Eng_Screen> {
                     ),
                   ),
                 );
-                // Navigator.push(
-                //     context,
-                //     MaterialPageRoute(
-                //       builder: (context) => Search_eng_Screen(
-                //         th2eng: widget.th2eng,
-                //         eng2th: widget.eng2th,
-                //         wordofthedayeng2th: widget.wordofthedayeng2th,
-                //         wordofthedayth2eng: widget.wordofthedayth2eng,
-                //       ),
-                //     ));
               },
               child: Text(
                 'ENG-TH',
@@ -301,20 +289,6 @@ class _Search_TH2Eng_ScreenState extends State<Search_TH2Eng_Screen> {
                       return InkWell(
                         onTap: () {
                           historywordth(items[index], context);
-
-                          // var test = items[index];
-                          // print(index);
-                          // print(items[index].runtimeType);
-                          // print(items[index]);
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) => Detail_wordTH_Screen(
-                          //       wordth: items[index],
-                          //       json: "",
-                          //     ),
-                          //   ),
-                          // );
                         },
                         child: Card(
                           elevation: 0,

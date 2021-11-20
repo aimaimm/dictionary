@@ -35,7 +35,6 @@ class _MyVocab_ScreenState extends State<MyVocab_Screen> {
     myvacab.removeAt(index);
     String saveAction = jsonEncode(myvacab);
     prefs.setString('myvocab', saveAction);
-    // connectLocal();
   }
 
   Future<void> InputCategories(BuildContext context) async {
@@ -88,7 +87,6 @@ class _MyVocab_ScreenState extends State<MyVocab_Screen> {
                             primary: Colors.white),
                         child: const Text('OK'),
                         onPressed: () async {
-                          //print(Category_txt.text);
                           SharedPreferences prefs =
                               await SharedPreferences.getInstance();
                           if (myvacab == null || myvacab == []) {
@@ -115,7 +113,6 @@ class _MyVocab_ScreenState extends State<MyVocab_Screen> {
                             String savefav = jsonEncode(myvacab);
                             prefs.setString('myvocab', savefav);
                           }
-                          // print("${myvacab} test ");
 
                           setState(() {
                             catspawn = true;
@@ -242,7 +239,6 @@ class _MyVocab_ScreenState extends State<MyVocab_Screen> {
                                         catspawn = false;
                                       });
                                       Navigator.pop(context);
-                                      // print(category);
                                     },
                                     child: const Text('OK'),
                                   ),

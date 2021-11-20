@@ -39,7 +39,6 @@ class _SideDrawerState extends State<SideDrawer> {
         children: <Widget>[
           DrawerHeader(
             child: Column(
-              //mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
@@ -53,9 +52,6 @@ class _SideDrawerState extends State<SideDrawer> {
                 )
               ],
             ),
-            // decoration: BoxDecoration(
-            //  border:
-            // ),
           ),
           ListTile(
             leading: const Icon(Icons.home_outlined),
@@ -73,18 +69,6 @@ class _SideDrawerState extends State<SideDrawer> {
                     ),
                   ),
                   (route) => false)
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) => WordOfDay_Screen(
-              //       eng2th: widget.eng2th,
-              //       th2eng: widget.th2eng,
-              //       wordofthedayeng2th: widget.wordofthedayeng2th,
-              //       wordofthedayth2eng: widget.wordofthedayth2eng,
-              //       lang_mode: 0,
-              //     ),
-              //   ),
-              // ),
             },
           ),
           ListTile(
@@ -102,17 +86,6 @@ class _SideDrawerState extends State<SideDrawer> {
                     ),
                   ),
                   (route) => false)
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) => Search_TH2Eng_Screen(
-              //       eng2th: widget.eng2th,
-              //       th2eng: widget.th2eng,
-              //       wordofthedayeng2th: widget.wordofthedayeng2th,
-              //       wordofthedayth2eng: widget.wordofthedayth2eng,
-              //     ),
-              //   ),
-              // ),
             },
           ),
           ListTile(
@@ -130,17 +103,6 @@ class _SideDrawerState extends State<SideDrawer> {
                     ),
                   ),
                   (route) => false)
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) => MyVocab_Screen(
-              //       eng2th: widget.eng2th,
-              //       th2eng: widget.th2eng,
-              //       wordofthedayeng2th: widget.wordofthedayeng2th,
-              //       wordofthedayth2eng: widget.wordofthedayth2eng,
-              //     ),
-              //   ),
-              // ),
             },
           ),
           ListTile(
@@ -158,17 +120,6 @@ class _SideDrawerState extends State<SideDrawer> {
                     ),
                   ),
                   (route) => false)
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) => History_Screen(
-              //       eng2th: widget.eng2th,
-              //       th2eng: widget.th2eng,
-              //       wordofthedayeng2th: widget.wordofthedayeng2th,
-              //       wordofthedayth2eng: widget.wordofthedayth2eng,
-              //     ),
-              //   ),
-              // ),
             },
           ),
         ],

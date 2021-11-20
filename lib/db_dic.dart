@@ -45,7 +45,6 @@ class db_dic {
   test(value) async {
     List<Map> res =
         await _db.rawQuery("SELECT * FROM eng2th WHERE eentry LIKE '%$value%'");
-    // print("1 $res");
     return res;
   }
 
@@ -62,7 +61,6 @@ class db_dic {
   void getDatath2eng() async {
     List resultth2eng =
         await _db.rawQuery('SELECT * FROM th2eng WHERE tsearch = "เอเชีย"');
-    // print(resultth2eng);
   }
 
   wordofthedayeng2th() async {

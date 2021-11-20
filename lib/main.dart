@@ -21,25 +21,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      //  title: 'Flutter Demo',
       theme: ThemeData(
         fontFamily: 'Sarabun',
-        // primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
       home: const FirstPage(),
-      // initialRoute: '/loaddataPage',
-      // routes:  {
-      //   '/loaddataPage' :(context)=>const FirstPage(),
-      //   'homepage':(context)=>const WordOfDay_Screen(),
-      //   '/search_eng2th':(context)=>const Search_eng_Screen(),
-      //   '/search_th2th':(context)=>const Search_TH2Eng_Screen(),
-      //   '/detail_eng2th':(context)=>const Detail_WordEng_Screen(),
-      //   '/detail_th2eng':(context)=>const Detail_wordTH_Screen(),
-      //   '/my_vocab_page':(context)=>const MyVocab_Screen(),
-      //   '/detail_my_vocab':(context)=>const Detail_MyVocab_Screen(),
-
-      // },
     );
   }
 }
