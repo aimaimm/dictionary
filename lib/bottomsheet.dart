@@ -1,3 +1,4 @@
+import 'package:dictionary/data.dart';
 import 'package:flutter/material.dart';
 
 class ModalBottomSheet extends StatefulWidget {
@@ -6,6 +7,78 @@ class ModalBottomSheet extends StatefulWidget {
 }
 
 class _ModalBottomSheetState extends State<ModalBottomSheet> {
+  Future<dynamic> Favorite_sheet(BuildContext context) {
+    return showModalBottomSheet(
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(20.0),
+            topRight: Radius.circular(20.0),
+          ),
+        ),
+        context: context,
+        builder: (context) {
+          return Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      'Save word to..',
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
+                    IconButton(
+                      icon: const Icon(Icons.close),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ],
+                ),
+              ),
+              const Divider(),
+              Expanded(
+                child: ListView.builder(
+                    //physics: const NeverScrollableScrollPhysics(),
+                    itemCount: category.length,
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        leading: Checkbox(
+                          value: category[index]['isChecked'],
+                          onChanged: (bool? value) {
+                            setState(() {
+                              category[index]['isChecked'] = value!;
+                              // print(value);
+                            });
+                          },
+                        ),
+                        title: Text('${category[index]['cat_name']}'),
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                      );
+                    }),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.width * 0.1,
+                width: MediaQuery.of(context).size.width,
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text('Done'),
+                  style: TextButton.styleFrom(
+                      backgroundColor: Colors.black, primary: Colors.white),
+                ),
+              ),
+            ],
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,103 +126,4 @@ class _ModalBottomSheetState extends State<ModalBottomSheet> {
       ),
     );
   }
-}
-
-Future<dynamic> Favorite_sheet(BuildContext context) {
-  bool? isChecked = false;
-  return showModalBottomSheet(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-          topLeft: const Radius.circular(20.0),
-          topRight: const Radius.circular(20.0),
-        ),
-      ),
-      context: context,
-      builder: (context) {
-        return Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Save word to..',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                  IconButton(
-                    icon: Icon(Icons.close),
-                    onPressed: () {
-                      Navigator.pop(context);
-                      
-                    },
-                  ),
-                ],
-              ),
-            ),
-            Divider(),
-            ListTile(
-              leading: Checkbox(
-                value: isChecked,
-                onChanged: (bool? value) {
-                  isChecked = value!;
-                },
-              ),
-              title: new Text('My internet is 4G ...'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Checkbox(
-                value: isChecked,
-                onChanged: (bool? value) {
-                  isChecked = value!;
-                },
-              ),
-              title: new Text('My internet is 4G ...'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Checkbox(
-                value: isChecked,
-                onChanged: (bool? value) {
-                  isChecked = value!;
-                },
-              ),
-              title: new Text('Crazy in love'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Checkbox(
-                value: isChecked,
-                onChanged: (bool? value) {
-                  isChecked = value!;
-                },
-              ),
-              title: new Text('Hate some one'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            Container(
-              height: MediaQuery.of(context).size.width * 0.1,
-              width: MediaQuery.of(context).size.width,
-              child: TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Text('Done'),
-                style: TextButton.styleFrom(
-                    backgroundColor: Colors.black, primary: Colors.white),
-              ),
-            ),
-          ],
-        );
-      });
 }
