@@ -29,6 +29,7 @@ class Search_eng_Screen extends StatefulWidget {
 }
 
 class _Search_eng_ScreenState extends State<Search_eng_Screen> {
+  int btn_change = 0;
   var items = [];
   List history = [];
 
@@ -127,6 +128,7 @@ class _Search_eng_ScreenState extends State<Search_eng_Screen> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -164,9 +166,11 @@ class _Search_eng_ScreenState extends State<Search_eng_Screen> {
                   ),
                 );
               },
-              child: const Text(
+              child: Text(
                 'TH-ENG',
-                style: TextStyle(color: Colors.black),
+                style: btn_change == 1
+                    ? const TextStyle(color: Colors.black)
+                    : TextStyle(color: Colors.grey[300]),
               ),
               style: TextButton.styleFrom(backgroundColor: Colors.white),
             ),
@@ -201,12 +205,13 @@ class _Search_eng_ScreenState extends State<Search_eng_Screen> {
                   onPressed: () {
                     clear();
                   },
-                  child: const Text(
+                  child: Text(
                     'Dictionary',
                     style: TextStyle(
-                        fontFamily: 'DMDisplay',
-                        color: Colors.white,
-                        fontSize: 36),
+                      fontFamily: 'DMDisplay',
+                      color: Colors.white,
+                      fontSize: size.width * 0.098,
+                    ),
                   ),
                 ),
                 const SizedBox(
@@ -293,7 +298,10 @@ class _Search_eng_ScreenState extends State<Search_eng_Screen> {
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: ListTile(
-                            leading: Text('${items[index]['esearch']}'),
+                            title: Text(
+                              '${items[index]['esearch']}',
+                              style: TextStyle(fontSize: size.width * 0.028),
+                            ),
                             trailing:
                                 const Icon(Icons.arrow_forward_ios_rounded),
                           ),

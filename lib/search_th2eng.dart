@@ -28,6 +28,7 @@ class Search_TH2Eng_Screen extends StatefulWidget {
 
 class _Search_TH2Eng_ScreenState extends State<Search_TH2Eng_Screen> {
   var items = [];
+  int btn_change = 0;
 
   List history = [];
 
@@ -157,6 +158,7 @@ class _Search_TH2Eng_ScreenState extends State<Search_TH2Eng_Screen> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -204,9 +206,11 @@ class _Search_TH2Eng_ScreenState extends State<Search_TH2Eng_Screen> {
                       ),
                     ));
               },
-              child: const Text(
+              child: Text(
                 'ENG-TH',
-                style: TextStyle(color: Colors.black),
+                style: btn_change == 1
+                    ? TextStyle(color: Colors.black)
+                    : TextStyle(color: Colors.grey[300]),
               ),
               style: TextButton.styleFrom(backgroundColor: Colors.white),
             ),
@@ -226,15 +230,12 @@ class _Search_TH2Eng_ScreenState extends State<Search_TH2Eng_Screen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                TextButton(
-                  onPressed: clear,
-                  child: const Text(
-                    'Dictionary',
-                    style: TextStyle(
-                        fontFamily: 'DMDisplay',
-                        color: Colors.white,
-                        fontSize: 36),
-                  ),
+                Text(
+                  'Dictionary',
+                  style: TextStyle(
+                      fontFamily: 'DMDisplay',
+                      color: Colors.white,
+                      fontSize: size.width * 0.098),
                 ),
                 const SizedBox(
                   height: 15,
@@ -311,7 +312,8 @@ class _Search_TH2Eng_ScreenState extends State<Search_TH2Eng_Screen> {
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: ListTile(
-                            leading: Text('${items[index]['tentry']}'),
+                            title: Text('${items[index]['tentry']}',
+                                style: TextStyle(fontSize: size.width * 0.028)),
                             trailing:
                                 const Icon(Icons.arrow_forward_ios_rounded),
                           ),
