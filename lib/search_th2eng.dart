@@ -195,16 +195,27 @@ class _Search_TH2Eng_ScreenState extends State<Search_TH2Eng_Screen> {
             padding: const EdgeInsets.only(top: 8, right: 8, bottom: 8),
             child: TextButton(
               onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => Search_eng_Screen(
-                        th2eng: widget.th2eng,
-                        eng2th: widget.eng2th,
-                        wordofthedayeng2th: widget.wordofthedayeng2th,
-                        wordofthedayth2eng: widget.wordofthedayth2eng,
-                      ),
-                    ));
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Search_eng_Screen(
+                      th2eng: widget.th2eng,
+                      eng2th: widget.eng2th,
+                      wordofthedayeng2th: widget.wordofthedayeng2th,
+                      wordofthedayth2eng: widget.wordofthedayth2eng,
+                    ),
+                  ),
+                );
+                // Navigator.push(
+                //     context,
+                //     MaterialPageRoute(
+                //       builder: (context) => Search_eng_Screen(
+                //         th2eng: widget.th2eng,
+                //         eng2th: widget.eng2th,
+                //         wordofthedayeng2th: widget.wordofthedayeng2th,
+                //         wordofthedayth2eng: widget.wordofthedayth2eng,
+                //       ),
+                //     ));
               },
               child: Text(
                 'ENG-TH',

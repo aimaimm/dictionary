@@ -61,71 +61,114 @@ class _SideDrawerState extends State<SideDrawer> {
             leading: const Icon(Icons.home_outlined),
             title: const Text('Home'),
             onTap: () => {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => WordOfDay_Screen(
-                    eng2th: widget.eng2th,
-                    th2eng: widget.th2eng,
-                    wordofthedayeng2th: widget.wordofthedayeng2th,
-                    wordofthedayth2eng: widget.wordofthedayth2eng,
-                    lang_mode: 0,
+              Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => WordOfDay_Screen(
+                      eng2th: widget.eng2th,
+                      th2eng: widget.th2eng,
+                      wordofthedayeng2th: widget.wordofthedayeng2th,
+                      wordofthedayth2eng: widget.wordofthedayth2eng,
+                      lang_mode: 0,
+                    ),
                   ),
-                ),
-              ),
+                  (route) => false)
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(
+              //     builder: (context) => WordOfDay_Screen(
+              //       eng2th: widget.eng2th,
+              //       th2eng: widget.th2eng,
+              //       wordofthedayeng2th: widget.wordofthedayeng2th,
+              //       wordofthedayth2eng: widget.wordofthedayth2eng,
+              //       lang_mode: 0,
+              //     ),
+              //   ),
+              // ),
             },
           ),
           ListTile(
             leading: const Icon(Icons.search),
             title: const Text('Search'),
             onTap: () => {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => Search_TH2Eng_Screen(
-                    eng2th: widget.eng2th,
-                    th2eng: widget.th2eng,
-                    wordofthedayeng2th: widget.wordofthedayeng2th,
-                    wordofthedayth2eng: widget.wordofthedayth2eng,
+              Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Search_TH2Eng_Screen(
+                      eng2th: widget.eng2th,
+                      th2eng: widget.th2eng,
+                      wordofthedayeng2th: widget.wordofthedayeng2th,
+                      wordofthedayth2eng: widget.wordofthedayth2eng,
+                    ),
                   ),
-                ),
-              ),
+                  (route) => false)
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(
+              //     builder: (context) => Search_TH2Eng_Screen(
+              //       eng2th: widget.eng2th,
+              //       th2eng: widget.th2eng,
+              //       wordofthedayeng2th: widget.wordofthedayeng2th,
+              //       wordofthedayth2eng: widget.wordofthedayth2eng,
+              //     ),
+              //   ),
+              // ),
             },
           ),
           ListTile(
             leading: const Icon(Icons.favorite_outline),
             title: const Text('My vocabulary'),
             onTap: () => {
-              Navigator.of(context).pop(),
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => MyVocab_Screen(
-                    eng2th: widget.eng2th,
-                    th2eng: widget.th2eng,
-                    wordofthedayeng2th: widget.wordofthedayeng2th,
-                    wordofthedayth2eng: widget.wordofthedayth2eng,
+              Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MyVocab_Screen(
+                      eng2th: widget.eng2th,
+                      th2eng: widget.th2eng,
+                      wordofthedayeng2th: widget.wordofthedayeng2th,
+                      wordofthedayth2eng: widget.wordofthedayth2eng,
+                    ),
                   ),
-                ),
-              ),
+                  (route) => false)
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(
+              //     builder: (context) => MyVocab_Screen(
+              //       eng2th: widget.eng2th,
+              //       th2eng: widget.th2eng,
+              //       wordofthedayeng2th: widget.wordofthedayeng2th,
+              //       wordofthedayth2eng: widget.wordofthedayth2eng,
+              //     ),
+              //   ),
+              // ),
             },
           ),
           ListTile(
             leading: const Icon(Icons.history),
             title: const Text('History'),
             onTap: () => {
-              Navigator.of(context).pop(),
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => History_Screen(
-                    eng2th: widget.eng2th,
-                    th2eng: widget.th2eng,
-                    wordofthedayeng2th: widget.wordofthedayeng2th,
-                    wordofthedayth2eng: widget.wordofthedayth2eng,
+              Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => History_Screen(
+                      eng2th: widget.eng2th,
+                      th2eng: widget.th2eng,
+                      wordofthedayeng2th: widget.wordofthedayeng2th,
+                      wordofthedayth2eng: widget.wordofthedayth2eng,
+                    ),
                   ),
-                ),
-              ),
+                  (route) => false)
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(
+              //     builder: (context) => History_Screen(
+              //       eng2th: widget.eng2th,
+              //       th2eng: widget.th2eng,
+              //       wordofthedayeng2th: widget.wordofthedayeng2th,
+              //       wordofthedayth2eng: widget.wordofthedayth2eng,
+              //     ),
+              //   ),
+              // ),
             },
           ),
         ],
