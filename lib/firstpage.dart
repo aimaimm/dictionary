@@ -46,6 +46,7 @@ class _FirstPageState extends State<FirstPage> {
       for (int i = 0; i < raweng2th.length; i++) {
         Map dummydata = Map.from(raweng2th[i]);
         dummydata.addAll({'count': 0});
+        dummydata.addAll({'fav': false});
         eng2th.add(dummydata);
         // String test = jsonEncode(eng2th);
         // List test1 = jsonDecode(test);
@@ -55,6 +56,7 @@ class _FirstPageState extends State<FirstPage> {
       for (int i = 0; i < rawth2eng.length; i++) {
         Map dummydata = Map.from(rawth2eng[i]);
         dummydata.addAll({'count': 0});
+        dummydata.addAll({'fav': false});
         th2eng.add(dummydata);
 
         // th2eng[i].add({'count': 0});

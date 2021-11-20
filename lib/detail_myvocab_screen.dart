@@ -1,23 +1,88 @@
-import 'package:dictionary/data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class Detail_MyVocab_Screen extends StatefulWidget {
-  const Detail_MyVocab_Screen({Key? key}) : super(key: key);
+  const Detail_MyVocab_Screen({Key? key, required this.mywordfav})
+      : super(key: key);
+
+  final List mywordfav;
 
   @override
   _Detail_MyVocab_ScreenState createState() => _Detail_MyVocab_ScreenState();
 }
 
 class _Detail_MyVocab_ScreenState extends State<Detail_MyVocab_Screen> {
+  bool checkGenerate_word = false;
+  List setword = [];
+  var keys = [
+    'a',
+    'b',
+    'c',
+    'd',
+    'e',
+    'f',
+    'g',
+    'h',
+    'i',
+    'j',
+    'k',
+    'l',
+    'm',
+    'n',
+    'o',
+    'p',
+    'q',
+    'r',
+    's',
+    't',
+    'u',
+    'v',
+    'w',
+    'x',
+    'y',
+    'z',
+  ];
+  var check_lang;
+
+  void separateword() {
+    if (widget.mywordfav[0]['groupword'] == [] ||
+        widget.mywordfav[0]['groupword'].length == 0) {
+      checkGenerate_word = false;
+    } else {
+      for (int i = 0; i < widget.mywordfav[0]['groupword'].length; i++) {
+        setword.add(widget.mywordfav[0]['groupword'][i]);
+      }
+      setState(() {
+        checkGenerate_word = true;
+      });
+    }
+  }
+
+  Widget check_textlang(item) {
+    check_lang =
+        RegExp("(?:^|\\s)(?:${keys.join('|')})(?!\\S)", caseSensitive: false);
+
+    if (check_lang.hasMatch(item['eentry'])) {
+      return Text('${item['eentry']}');
+    } else {
+      return Text('${item['tentry']}');
+    }
+  }
+
+  @override
+  void initState() {
+    separateword();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        shape:const RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
-            bottomLeft:  Radius.circular(20.0),
-            bottomRight:  Radius.circular(20.0),
+            bottomLeft: Radius.circular(20.0),
+            bottomRight: Radius.circular(20.0),
           ),
         ),
         automaticallyImplyLeading: false,
@@ -29,7 +94,7 @@ class _Detail_MyVocab_ScreenState extends State<Detail_MyVocab_Screen> {
           style: TextStyle(fontSize: 15),
         ),
         leading: IconButton(
-          icon:const Icon(Icons.arrow_back_ios_new_outlined),
+          icon: const Icon(Icons.arrow_back_ios_new_outlined),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -40,11 +105,11 @@ class _Detail_MyVocab_ScreenState extends State<Detail_MyVocab_Screen> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
-                padding:
-                  const  EdgeInsets.only(bottom: 25, right: 20, left: 20, top: 8),
-                child:const Text(
-                  'Crazy in love',
-                  style: TextStyle(
+                padding: const EdgeInsets.only(
+                    bottom: 25, right: 20, left: 20, top: 8),
+                child: Text(
+                  '${widget.mywordfav[0]['name']}',
+                  style: const TextStyle(
                       fontFamily: 'DMDisplay',
                       fontSize: 36,
                       color: Colors.white),
@@ -54,24 +119,26 @@ class _Detail_MyVocab_ScreenState extends State<Detail_MyVocab_Screen> {
           ),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: ListView.builder(
-            itemCount: History.length,
-            itemBuilder: (context, index) {
-              return Card(
-                elevation: 0,
-                color: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: ListTile(
-                  leading: Text('${History[index]['name']}'),
-                  trailing:const Icon(Icons.arrow_forward_ios_rounded),
-                ),
-              );
-            }),
-      ),
+      body: checkGenerate_word
+          ? Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: ListView.builder(
+                  itemCount: widget.mywordfav.length,
+                  itemBuilder: (context, index) {
+                    return Card(
+                      elevation: 0,
+                      color: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: ListTile(
+                        leading: check_textlang(setword[index]),
+                        trailing: const Icon(Icons.arrow_forward_ios_rounded),
+                      ),
+                    );
+                  }),
+            )
+          : Container(),
     );
   }
 }

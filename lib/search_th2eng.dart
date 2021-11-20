@@ -33,7 +33,6 @@ class _Search_TH2Eng_ScreenState extends State<Search_TH2Eng_Screen> {
 
   void historywordth(item, context) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    item['count']++;
     String? wordall = prefs.getString('k_word');
 
     if (wordall == null) {
