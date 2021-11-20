@@ -125,7 +125,7 @@ class _Detail_MyVocab_ScreenState extends State<Detail_MyVocab_Screen> {
           ? Padding(
               padding: const EdgeInsets.all(20.0),
               child: ListView.builder(
-                  itemCount: widget.mywordfav.length,
+                  itemCount: setword.length,
                   itemBuilder: (context, index) {
                     return InkWell(
                       onTap: () {
