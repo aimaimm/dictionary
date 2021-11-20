@@ -1,3 +1,5 @@
+import 'package:dictionary/detail_wordeng_screen.dart';
+import 'package:dictionary/detail_wordth_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -125,15 +127,44 @@ class _Detail_MyVocab_ScreenState extends State<Detail_MyVocab_Screen> {
               child: ListView.builder(
                   itemCount: widget.mywordfav.length,
                   itemBuilder: (context, index) {
-                    return Card(
-                      elevation: 0,
-                      color: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: ListTile(
-                        leading: check_textlang(setword[index]),
-                        trailing: const Icon(Icons.arrow_forward_ios_rounded),
+                    return InkWell(
+                      onTap: () {
+                        check_lang = RegExp(
+                            "(?:^|\\s)(?:${keys.join('|')})(?!\\S)",
+                            caseSensitive: false);
+
+                        if (check_lang.hasMatch(setword[index]['eentry'])) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Detail_WordEng_Screen(
+                                wordeng: setword[index],
+                              ),
+                            ),
+                          );
+                        } else {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Detail_wordTH_Screen(
+                                checkstate: false,
+                                json: '',
+                                wordth: setword[index],
+                              ),
+                            ),
+                          );
+                        }
+                      },
+                      child: Card(
+                        elevation: 0,
+                        color: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: ListTile(
+                          leading: check_textlang(setword[index]),
+                          trailing: const Icon(Icons.arrow_forward_ios_rounded),
+                        ),
                       ),
                     );
                   }),
