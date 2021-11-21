@@ -236,7 +236,7 @@ class _MyVocab_ScreenState extends State<MyVocab_Screen> {
                                       setState(() {
                                         saveAction(index);
 
-                                        catspawn = false;
+                                        catspawn = true;
                                       });
                                       Navigator.pop(context);
                                     },
